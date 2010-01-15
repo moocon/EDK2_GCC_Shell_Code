@@ -1,1 +1,121 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><b><span style="font-size: 10pt; font-family: Verdana">Getting Started</span></b><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span><span style="font-size: 10pt; font-family: Verdana">You will need to&nbsp;</span><span style="font-size: 8.5pt; font-family: Verdana"><a href="https://edk2.tianocore.org/installation.html"><b><span style="font-size: 10pt; color: #0066cc"><u>install some external tools</u></span></b></a></span><span style="font-size: 10pt; font-family: Verdana">&nbsp;that are necessary to build the code.</span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span> <p class="MsoNormal" style="margin: 0in 0in 0pt; line-height: 10.5pt"><span style="font-size: 10pt; font-family: Verdana">To get the code please follow this&nbsp;</span><span style="font-size: 8.5pt; font-family: Verdana"><a href="https://edk2.tianocore.org/subversion_setup.html"><span style="font-size: 10pt; color: #0066cc"><u>document</u></span></a></span><span style="font-size: 10pt; font-family: Verdana">. It will walk you through the installation of the Subversion Software Configuration management Client,&nbsp;<b>TortoiseSVN</b>, and show you how to pull the latest copy of the tree.</span></p><span style="font-size: 10pt; font-family: Verdana" /><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span>&nbsp; <p class="MsoNormal" style="margin: 0in 0in 0pt; line-height: 10.5pt"><span style="font-size: 10pt; font-family: Verdana">Further instructions for using the EDK II are provided in the&nbsp;</span><span style="font-size: 8.5pt; font-family: Verdana"><a href="https://edk2.tianocore.org/source/browse/edk2/trunk/edk2/BuildNotes2.txt?rev=3765&amp;view=markup"><b><span style="font-size: 10pt; color: #0066cc; text-decoration: none; text-underline: none">BuildNotes2.txt</span></b></a></span><span style="font-size: 10pt; font-family: Verdana">&nbsp;at the top of the edk2 directory tree. This file can be displayed using the&nbsp;</span><span style="font-size: 8.5pt; font-family: Verdana"><a href="https://edk2.tianocore.org/source/browse/edk2/trunk/edk2/"><span style="font-size: 10pt; color: #8877aa"><u>Subversion web interface</u></span></a></span><span style="font-size: 10pt; font-family: Verdana">.</span></p><span style="font-size: 10pt; font-family: Verdana" /><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span>&nbsp;<span style="font-size: 10pt; font-family: Verdana">Additionally, we have provided some&nbsp;<a href="https://edk2.tianocore.org/step-by-step-instructions.html"><span style="color: #8877aa"><u>step-by-step</u></span></a>&nbsp;instructions for helping new developers set up their build environment and build their first EDK II package.&nbsp; These instructions also cover setting up builds for Unix-like platforms, including building a GCC UEFI cross compiler for EDK II development.&nbsp;</span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span>&nbsp;<font size="3"><span class="apple-style-span"><b><span style="font-family: Verdana">beagleboard</span></b></span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span></font><span class="apple-style-span"><span style="font-family: Verdana"><font size="2">The EDK II has a platform port for a <u>beagleboard</u> (link to </font><a href="http://beagleboard.org/"><u><font color="#0000ff" size="2">beagleboard.org</font></u></a><font size="3"><font size="2">). &nbsp;We have provided &nbsp;build and install instructions to help new developers get the EDK II up and running on the beagle board.</font>&nbsp;</font></span></span><span style="font-size: 8.5pt; font-family: Verdana"><p>&nbsp;</p></span>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>Default Project Content</title>
+</head>
+<body>
+<h1><big>Welcome to the GCC Shell project</big></h1>
+<br>
+The purpose of this project is to provide the ability to build the <a
+ href="https://efi-shell.tianocore.org/">efi-shell</a> project in the <a
+ href="https://edk2.tianocore.org/">EDK II</a> for the ARM processor
+type, and for all processor types with GCC.&nbsp; Currently you can
+build the <a href="https://efi-shell.tianocore.org/">efi-shell</a> in
+the EDK II with the Edk Compatability Package, but it does not support
+ARM or GCC.&nbsp; Since adding ARM and GCC support required modifying
+the efi-shell code in a way that is not compatible with the efi-shell
+project this new project was added.<br>
+<br>
+<span style="font-weight: bold;"></span>
+<h1>Short Lived Project</h1>
+It is intended that is project have a short life. The long term goal is
+to have a pure EDK II shell. When an EDK II shell is availible this
+project will be retired. <br>
+<br>
+<h1>Getting Started</h1>
+The following instructions assume you have the EDK II installed in the
+edk2 directory.<br>
+<br>
+Checkout the gcc-shell project from source controll: <br>
+<br>
+<span style="font-family: monospace;">cd edk2</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">svn co
+https://gcc-shell.tianocore.org/svn/gcc-shell/trunk/GccShellPkg
+GccShellPkg --username username<br>
+</span><br>
+Follow the <a
+ href="https://edk2.tianocore.org/step-by-step-instructions.html">OS
+specific instructions</a> to setup your build environment. For Windows
+edksetup.bat, for Unix like systems you need to export EDK_TOOLS_PATH
+and source edksetup.sh. Then you can build the shell:<br>
+<br>
+Windows with RVCT:<br>
+<span style="font-family: monospace;">build -p
+GccShellPkg/GccShellPkg.dsc -a ARM -t RVCT31</span><br>
+<br>
+Windows Cygwin Bash shell with RVCT:<br>
+<span style="font-family: monospace;">build -p
+GccShellPkg/GccShellPkg.dsc -a ARM -t RVCT31CYGWIN</span><br
+ style="font-family: monospace;">
+<br>
+OS X with Xcode tools example:<br>
+<span style="font-family: monospace;">build -p
+GccShellPkg/GccShellPkg.dsc -a IA32 -t XCODE32</span><br
+ style="font-family: monospace;">
+<br>
+<h2>Common Errors</h2>
+build.py...<br>
+&nbsp;: error 1005: There are 2 INF files in
+/Users/fish/work/edk2/GccShellPkg.<br>
+&nbsp;&nbsp;&nbsp; Please use '-m &lt;INF_FILE_PATH&gt;' switch to
+choose one.<br>
+<br>
+If you build from the edk2/GccShellPkg directory you need to pick
+either Shell.inf or ShellFull.inf. If you cd up to the edk2 directory
+this build error will go away.<br>
+<br>
+<br>
+<br>
+'c:/Program' is not recognized as an internal or external command,<br>
+operable program or batch file.<br>
+NMAKE : fatal error U1077: '"c:/Program
+Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc"' : return code
+'0x1'<br>
+<br>
+The default location of the RVCT compiler is&nbsp; not correct. Edit
+edk2/Conf/tools_def.txt and update the line that starts with DEFINE
+RVCT31_TOOLS_PATH to match the location of your RVCT install.<br>
+<br>
+<br>
+<br>
+Building ...
+/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
+[ARM]<br>
+"/cygdrive/c/work/edk2/BaseTools/Bin/CYGWIN_NT-5.1-i686/armcc_wrapper.py"
+"/cygdrive/c/Program
+Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc" --cpu
+Cortex-A8&nbsp; --c90 -c -g -O2 --no_autoinline --asm --gnu --apcs
+/interwork --signed_chars --no_unaligned_access --split_sections
+--preinclude AutoGen.h --diag_warning 167 -o
+/cygdrive/c/work/edk2/Build/BeagleBoard/DEBUG_RVCT31CYGWIN/ARM/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/./PcdLib.obj
+-I/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull
+-I/cygdrive/c/work/edk2/Build/BeagleBoard/DEBUG_RVCT31CYGWIN/ARM/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/DEBUG
+-I/cygdrive/c/work/edk2/MdePkg -I/cygdrive/c/work/edk2/MdePkg/Include
+-I/cygdrive/c/work/edk2/MdePkg/Include/Arm
+/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull/PcdLib.c<br>
+/bin/sh: /cygdrive/c/Program
+Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc: No such file or
+directory<br>
+<br>
+The default location of the RVCT compiler is&nbsp; not correct. Edit
+edk2/Conf/tools_def.txt and update the line that starts with DEFINE
+RVCT31CYGWIN_TOOLS_PATH to match the location of your RVCT install.<br>
+<br>
+<br>
+edk2/Conf/tools_def.txt file does not exist<br>
+<br>
+This file is not checked into source control. When you setup your build
+environment the first time edk2/BaseTools/Conf/tools_def.template gets
+copied to edk2/Conf/tools_def.txt. This allows you to make local
+modification to match the locations of the compilers installed on your
+systme without having to check that back into source control. If
+edk/Conf/tools_def.txt exists it will not get overwritten.&nbsp; So you
+should only have to change it one time. <br>
+<br>
+<br>
+<span style="font-weight: bold;"></span>
+</body>
+</html>
