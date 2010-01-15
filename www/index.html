@@ -8,34 +8,34 @@
 <body>
 <h1><big>Welcome to the GCC Shell project</big></h1>
 <br>
-The purpose of this project is to provide the ability to build the <a
- href="https://efi-shell.tianocore.org/">efi-shell</a> project in the <a
- href="https://edk2.tianocore.org/">EDK II</a> for the ARM processor
+<big>The purpose of this project is to provide the ability to build the
+<a href="https://efi-shell.tianocore.org/">efi-shell</a> project in the
+<a href="https://edk2.tianocore.org/">EDK II</a> for the ARM processor
 type, and for all processor types with GCC.&nbsp; Currently you can
 build the <a href="https://efi-shell.tianocore.org/">efi-shell</a> in
 the EDK II with the Edk Compatability Package, but it does not support
 ARM or GCC.&nbsp; Since adding ARM and GCC support required modifying
 the efi-shell code in a way that is not compatible with the efi-shell
 project this new project was added.<br>
-<br>
+</big><br>
 <span style="font-weight: bold;"></span>
 <h1>Short Lived Project</h1>
-It is intended that is project have a short life. The long term goal is
-to have a pure EDK II shell. When an EDK II shell is availible this
-project will be retired. <br>
-<br>
+<big>It is intended that is project have a short life. The long term
+goal is to have a pure EDK II shell. When an EDK II shell is availible
+this project will be retired. <br>
+</big><br>
 <h1>Getting Started</h1>
-The following instructions assume you have the EDK II installed in the
-edk2 directory.<br>
+<big>The following instructions assume you have the EDK II installed in
+the edk2 directory.<br>
 <br>
 Checkout the gcc-shell project from source controll: <br>
 <br>
-<span style="font-family: monospace;">cd edk2</span><br
+<big><span style="font-family: monospace;">cd edk2</span><br
  style="font-family: monospace;">
 <span style="font-family: monospace;">svn co
 https://gcc-shell.tianocore.org/svn/gcc-shell/trunk/GccShellPkg
 GccShellPkg --username username<br>
-</span><br>
+</span></big><br>
 Follow the <a
  href="https://edk2.tianocore.org/step-by-step-instructions.html">OS
 specific instructions</a> to setup your build environment. For Windows
@@ -43,21 +43,22 @@ edksetup.bat, for Unix like systems you need to export EDK_TOOLS_PATH
 and source edksetup.sh. Then you can build the shell:<br>
 <br>
 Windows with RVCT:<br>
-<span style="font-family: monospace;">build -p
+<big><span style="font-family: monospace;">build -p
 GccShellPkg/GccShellPkg.dsc -a ARM -t RVCT31</span><br>
-<br>
+</big><br>
 Windows Cygwin Bash shell with RVCT:<br>
-<span style="font-family: monospace;">build -p
+<big><span style="font-family: monospace;">build -p
 GccShellPkg/GccShellPkg.dsc -a ARM -t RVCT31CYGWIN</span><br
  style="font-family: monospace;">
-<br>
+</big><br>
 OS X with Xcode tools example:<br>
-<span style="font-family: monospace;">build -p
+<big><span style="font-family: monospace;">build -p
 GccShellPkg/GccShellPkg.dsc -a IA32 -t XCODE32</span><br
  style="font-family: monospace;">
+</big></big>
 <br>
 <h2>Common Errors</h2>
-build.py...<br>
+<big>build.py...<br>
 &nbsp;: error 1005: There are 2 INF files in
 /Users/fish/work/edk2/GccShellPkg.<br>
 &nbsp;&nbsp;&nbsp; Please use '-m &lt;INF_FILE_PATH&gt;' switch to
@@ -114,6 +115,7 @@ modification to match the locations of the compilers installed on your
 systme without having to check that back into source control. If
 edk/Conf/tools_def.txt exists it will not get overwritten.&nbsp; So you
 should only have to change it one time. <br>
+</big>
 <br>
 <br>
 <span style="font-weight: bold;"></span>
