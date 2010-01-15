@@ -13,28 +13,31 @@
 <a href="https://edk2.tianocore.org/">EDK II</a> for the ARM processor
 type, and for all processor types with GCC.&nbsp; Currently you can
 build the <a href="https://efi-shell.tianocore.org/">efi-shell</a> in
-the EDK II with the Edk Compatability Package, but it does not support
+the EDK II with the Edk Compatibility Package, but it does not support
 ARM or GCC.&nbsp; Since adding ARM and GCC support required modifying
 the efi-shell code in a way that is not compatible with the efi-shell
 project this new project was added.<br>
 </big><br>
+<big>The current gcc-shell project is based on the <a
+ href="https://efi-shell.tianocore.org/">efi-shell</a> Subversion
+revision 34. </big><br>
 <span style="font-weight: bold;"></span>
 <h1>Short Lived Project</h1>
-<big>It is intended that is project have a short life. The long term
-goal is to have a pure EDK II shell. When an EDK II shell is availible
-this project will be retired. <br>
+<big>It is intended that this project will have a short life. The long
+term goal is to have a pure EDK II shell. When an EDK II shell is
+available this project will be retired. <br>
 </big><br>
 <h1>Getting Started</h1>
 <big>The following instructions assume you have the EDK II installed in
 the edk2 directory.<br>
 <br>
-Checkout the gcc-shell project from source controll: <br>
+Checkout the gcc-shell project from source control: <br>
 <br>
 <big><span style="font-family: monospace;">cd edk2</span><br
  style="font-family: monospace;">
-<span style="font-family: monospace;">svn co
+<span style="font-family: monospace;"><small>svn co
 https://gcc-shell.tianocore.org/svn/gcc-shell/trunk/GccShellPkg
-GccShellPkg --username username<br>
+GccShellPkg --username username</small><br>
 </span></big><br>
 Follow the <a
  href="https://edk2.tianocore.org/step-by-step-instructions.html">OS
@@ -112,7 +115,7 @@ This file is not checked into source control. When you setup your build
 environment the first time edk2/BaseTools/Conf/tools_def.template gets
 copied to edk2/Conf/tools_def.txt. This allows you to make local
 modification to match the locations of the compilers installed on your
-systme without having to check that back into source control. If
+system without having to check that back into source control. If
 edk/Conf/tools_def.txt exists it will not get overwritten.&nbsp; So you
 should only have to change it one time. <br>
 </big>
