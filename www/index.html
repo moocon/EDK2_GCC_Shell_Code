@@ -21,6 +21,7 @@ project this new project was added.<br>
 <big>The current gcc-shell project is based on the <a
  href="https://efi-shell.tianocore.org/">efi-shell</a> Subversion
 revision 34. </big><br>
+<br>
 <span style="font-weight: bold;"></span>
 <h1>Short Lived Project</h1>
 <big>It is intended that this project will have a short life. The long
@@ -60,6 +61,7 @@ GccShellPkg/GccShellPkg.dsc -a IA32 -t XCODE32</span><br
  style="font-family: monospace;">
 </big></big>
 <br>
+<br>
 <h1>Common Errors</h1>
 <big>build.py...<br>
 &nbsp;: error 1005: There are 2 INF files in
@@ -69,7 +71,7 @@ choose one.<br>
 <br>
 If you build from the edk2/GccShellPkg directory you need to pick
 either Shell.inf or ShellFull.inf. If you cd up to the edk2 directory
-this build error will go away.<br>
+this build error will go away and both .inf files will be built.<br>
 <br>
 <br>
 <br>
@@ -79,7 +81,7 @@ NMAKE : fatal error U1077: '"c:/Program
 Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc"' : return code
 '0x1'<br>
 <br>
-The default location of the RVCT compiler is&nbsp; not correct. Edit
+The default location of the RVCT compiler is not correct. Edit
 edk2/Conf/tools_def.txt and update the line that starts with DEFINE
 RVCT31_TOOLS_PATH to match the location of your RVCT install.<br>
 <br>
