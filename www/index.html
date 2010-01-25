@@ -1,25 +1,25 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
   <title>Default Project Content</title>
 </head>
 <body>
 <h1><big>Welcome to the gcc-shell project</big></h1>
 <br>
 <big>The purpose of this project is to provide the ability to build the
-<a href="https://efi-shell.tianocore.org/">efi-shell</a> project in the
-<a href="https://edk2.tianocore.org/">EDK II</a> for the ARM processor
+<a href="http://efi-shell.sourceforge.net">efi-shell</a> project in the
+<a href="http://edk2.sourceforge.net">EDK II</a> for the ARM processor
 type, and for all processor types with GCC.&nbsp; Currently you can
-build the <a href="https://efi-shell.tianocore.org/">efi-shell</a> in
+build the <a href="http://efi-shell.sourceforge.net">efi-shell</a> in
 the EDK II with the Edk Compatibility Package, but it does not support
 ARM or GCC.&nbsp; Since adding ARM and GCC support required modifying
 the efi-shell code in a way that is not compatible with the efi-shell
 project this new project was added.<br>
 </big><br>
 <big>The current gcc-shell project is based on the <a
- href="https://efi-shell.tianocore.org/">efi-shell</a> Subversion
+ href="http://efi-shell.sourceforge.net">efi-shell</a> Subversion
 revision 34. </big><br>
 <br>
 <span style="font-weight: bold;"></span>
@@ -32,17 +32,22 @@ available this project will be retired. <br>
 <big>The following instructions assume you have the EDK II installed in
 the edk2 directory.<br>
 <br>
-Checkout the gcc-shell project from source control: <br>
-<br>
+</big>
+<h3><big>Checkout the gcc-shell project from source control: </big></h3>
+<big><br>
 <big><span style="font-family: monospace;">cd edk2</span><br
  style="font-family: monospace;">
 <big><span style="font-family: monospace;"><small>svn co
 https://gcc-shell.tianocore.org/svn/gcc-shell/trunk/GccShellPkg
 GccShellPkg --username username</small><br>
 </span></big></big><br>
-Follow the <a
- href="https://edk2.tianocore.org/step-by-step-instructions.html">OS
-specific instructions</a> to setup your build environment. For Windows
+</big>
+<h3><big>Build GccShellPkg: </big></h3>
+<br>
+<big>Follow the <a
+ href="https://sourceforge.net/apps/mediawiki/tianocore/index.php?title=Step-by-step_instructions">OS
+specific
+instructions</a> to setup your build environment. For Windows
 edksetup.bat, for Unix like systems you need to export EDK_TOOLS_PATH
 and source edksetup.sh. Then you can build the shell:<br>
 <br>
@@ -61,25 +66,166 @@ GccShellPkg/GccShellPkg.dsc -a IA32 -t XCODE32</span><br
  style="font-family: monospace;">
 </big></big>
 <br>
+<h3><big>Use gcc-shell in UnixPkg</big></h3>
+<big><big><span style="font-family: monospace;">cd edk2/UnixPkg</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">edit UnixPkg.fdf </span></big></big><br>
+<br>
+Change:<br>
+<big><big><span style="font-family: monospace;">SECTION PE32 =
+EdkShellBinPkg/FullShell/Ia32/Shell_Full.efi</span></big></big><br>
+To:<br>
+<big><big><span style="font-family: monospace;">SECTION PE32 =
+Build/GccShellPkg/DEBUG_XCODE32/IA32/ShellFull.efi</span></big></big><br>
+<br>
+Now build the shell:<br>
+./build.sh<br>
+<br>
+Run the UnixPkg emulator:<br>
+./build.sh run<br>
+<br>
+Let the UnixPkg emulator run until it boots the EFI Shell (gcc-shell)
+and break into gdb with a ctrl-c. Your display might vary, but you
+should see symbols for the EFI-Shell. The current UnixPkg uses an EFI
+shell binary that was produced with Visual Studio so no symbols will be
+shown. <br>
+<br>
+<span style="font-family: monospace;">^C</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">Program received signal SIGINT,
+Interrupt.</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">0x92423806 in __semwait_signal ()</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">(gdb) bt</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#0&nbsp; 0x92423806 in
+__semwait_signal ()</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">#1&nbsp; 0x9244f441 in
+nanosleep$UNIX2003 ()</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">#2&nbsp; 0x0000b989 in msSleep
+(Milliseconds=0x14) at
+/Users/fish/work/Migration/edk2/UnixPkg/Sec/UnixThunk.c:102</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#3&nbsp; 0x0000acf5 in
+UgaCheckKey (UgaIo=0x207880) at
+/Users/fish/work/Migration/edk2/UnixPkg/Sec/UgaX11.c:380</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#4&nbsp; 0x0000d8b7 in
+_GasketUintn () at
+/Users/fish/work/Migration/edk2/Build/Unix/DEBUG_XCODE32/IA32/UnixPkg/Sec/SecMain/OUTPUT/Ia32/Gasket.iii:63</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#5&nbsp; 0x0000d801 in
+GasketUgaCheckKey (UgaIo=0x207880) at
+/Users/fish/work/Migration/edk2/UnixPkg/Sec/Gasket.c:406</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#6&nbsp; 0x454a25fb in
+UnixUgaSimpleTextInWaitForKey (Event=0x45603610, Context=0x45382110) at
+/Users/fish/work/Migration/edk2/UnixPkg/UnixUgaDxe/UnixUgaInput.c:169</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#7&nbsp; 0x45faad3a in
+CoreDispatchEventNotifies (Priority=0x10) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Event/Event.c:185</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#8&nbsp; 0x45faa639 in
+CoreRestoreTpl (NewTpl=0x4) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Event/Tpl.c:114</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#9&nbsp; 0x45f9f197 in
+CoreReleaseLock (Lock=0x45fb1024) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Library/Library.c:102</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#10 0x45faabd6 in
+CoreReleaseEventLock () at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Event/Event.c:113</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#11 0x45fab26c in CoreCheckEvent
+(UserEvent=0x45603210) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Event/Event.c:562</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#12 0x45fab2db in
+CoreWaitForEvent (NumberOfEvents=0x1, UserEvents=0x45f94bc4,
+UserIndex=0x45f94bac) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Event/Event.c:621</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#13 0x49bd2d45 in
+WaitForSingleEvent (Event=0x45603210, Timeout=0x0) at
+/Users/fish/work/Migration/edk2/GccShellPkg/Library/Event.c:212</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#14 0x49be0442 in SEnvConIoRead
+(File=0x49c52a60, BufferSize=0x45f94d04, Buffer=0x49fe3010) at
+/Users/fish/work/Migration/edk2/GccShellPkg/shellenv/conio.c:553</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#15 0x49bd490a in NShellPrompt
+(ImageHandle=0x49d95e10) at
+/Users/fish/work/Migration/edk2/GccShellPkg/newshell/init.c:949</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#16 0x49bd4720 in InitializeShell
+(ImageHandle=0x49d95e10, SystemTable=0x45f73f90) at
+/Users/fish/work/Migration/edk2/GccShellPkg/newshell/init.c:715</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#17 0x45f9e4e3 in CoreStartImage
+(ImageHandle=0x49d95e10, ExitDataSize=0x45f94eec, ExitData=0x45f94ee8)
+at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/Image/Image.c:1260</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#18 0x4550cccc in
+BdsLibBootViaBootOption (Option=0x49ffa510, DevicePath=0x49ffa490,
+ExitDataSize=0x45f94eec, ExitData=0x45f94ee8) at
+/Users/fish/work/Migration/edk2/IntelFrameworkModulePkg/Library/GenericBdsLib/BdsBoot.c:382</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#19 0x455252a9 in
+BdsBootDeviceSelect () at
+/Users/fish/work/Migration/edk2/IntelFrameworkModulePkg/Universal/BdsDxe/BdsEntry.c:214</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#20 0x455255bc in BdsEntry
+(This=0x4552d01c) at
+/Users/fish/work/Migration/edk2/IntelFrameworkModulePkg/Universal/BdsDxe/BdsEntry.c:356</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#21 0x45fad7e8 in DxeMain
+(HobStart=0x45f70010) at
+/Users/fish/work/Migration/edk2/MdeModulePkg/Core/Dxe/DxeMain/DxeMain.c:425</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#22 0x45fadd1d in
+ProcessModuleEntryPointList (HobStart=0x42020000) at
+/Users/fish/work/Migration/edk2/Build/Unix/DEBUG_XCODE32/IA32/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/AutoGen.c:287</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">#23 0x45f97773 in
+_ModuleEntryPoint (HobStart=0x42020000) at
+/Users/fish/work/Migration/edk2/MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.c:54</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">(gdb) </span><br>
+<br>
+The UnixPkg should produce an X11 window that is the emulated EFI
+graphics console. <br>
+<br>
+<img style="width: 800px; height: 622px;"
+ alt="UnixPkg X11 emulated EFI graphics console" src="X11-Window.jpg"><br>
 <br>
 <h1>Common Errors</h1>
-<big>build.py...<br>
-&nbsp;: error 1005: There are 2 INF files in
-/Users/fish/work/edk2/GccShellPkg.<br>
-&nbsp;&nbsp;&nbsp; Please use '-m &lt;INF_FILE_PATH&gt;' switch to
-choose one.<br>
+<big><span style="font-family: monospace;">build.py...</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;: error 1005: There are 2
+INF files in
+/Users/fish/work/edk2/GccShellPkg.</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; Please use '-m
+&lt;INF_FILE_PATH&gt;' switch to
+choose one.</span><br style="font-family: monospace;">
 <br>
 If you build from the edk2/GccShellPkg directory you need to pick
 either Shell.inf or ShellFull.inf. If you cd up to the edk2 directory
 this build error will go away and both .inf files will be built.<br>
 <br>
 <br>
-<br>
-'c:/Program' is not recognized as an internal or external command,<br>
-operable program or batch file.<br>
-NMAKE : fatal error U1077: '"c:/Program
+<span style="font-family: monospace;">'c:/Program' is not recognized as
+an internal or external command,</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">operable program or batch file.</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">NMAKE : fatal error U1077:
+'"c:/Program
 Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc"' : return code
-'0x1'<br>
+'0x1'</span><br style="font-family: monospace;">
 <br>
 The default location of the RVCT compiler is not correct. Edit
 edk2/Conf/tools_def.txt and update the line that starts with DEFINE
@@ -87,31 +233,38 @@ RVCT31_TOOLS_PATH to match the location of your RVCT install.<br>
 <br>
 <br>
 <br>
-Building ...
+<br>
+<span style="font-family: monospace;">Building ...
 /cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
-[ARM]<br>
-"/cygdrive/c/work/edk2/BaseTools/Bin/CYGWIN_NT-5.1-i686/armcc_wrapper.py"
+[ARM]</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">"/cygdrive/c/work/edk2/BaseTools/Bin/CYGWIN_NT-5.1-i686/armcc_wrapper.py"
 "/cygdrive/c/Program
-Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc" --cpu
+Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc"
+--cpu
 Cortex-A8&nbsp; --c90 -c -g -O2 --no_autoinline --asm --gnu --apcs
 /interwork --signed_chars --no_unaligned_access --split_sections
 --preinclude AutoGen.h --diag_warning 167 -o
 /cygdrive/c/work/edk2/Build/BeagleBoard/DEBUG_RVCT31CYGWIN/ARM/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/./PcdLib.obj
 -I/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull
 -I/cygdrive/c/work/edk2/Build/BeagleBoard/DEBUG_RVCT31CYGWIN/ARM/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/DEBUG
--I/cygdrive/c/work/edk2/MdePkg -I/cygdrive/c/work/edk2/MdePkg/Include
+-I/cygdrive/c/work/edk2/MdePkg
+-I/cygdrive/c/work/edk2/MdePkg/Include
 -I/cygdrive/c/work/edk2/MdePkg/Include/Arm
-/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull/PcdLib.c<br>
-/bin/sh: /cygdrive/c/Program
+/cygdrive/c/work/edk2/MdePkg/Library/BasePcdLibNull/PcdLib.c</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">/bin/sh: /cygdrive/c/Program
 Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc: No such file or
-directory<br>
+directory</span><br>
 <br>
 The default location of the RVCT compiler is&nbsp; not correct. Edit
 edk2/Conf/tools_def.txt and update the line that starts with DEFINE
 RVCT31CYGWIN_TOOLS_PATH to match the location of your RVCT install.<br>
 <br>
 <br>
-edk2/Conf/tools_def.txt file does not exist<br>
+<br>
+<br>
+<span style="font-family: monospace;">edk2/Conf/tools_def.txt file does
+not exist</span><br>
 <br>
 This file is not checked into source control. When you setup your build
 environment the first time edk2/BaseTools/Conf/tools_def.template gets
@@ -122,6 +275,28 @@ edk/Conf/tools_def.txt exists it will not get overwritten.&nbsp; So you
 should only have to change it one time. <br>
 </big>
 <br>
+<br>
+<br>
+<br>
+<big><span style="font-family: monospace;">GenFw --xip -e
+UEFI_APPLICATION -o
+/Users/fish/work/Migration/edk2/Build/GccShellPkg/DEBUG_XCODE32/IA32/GccShellPkg/Shell/DEBUG/Shell.efi
+/Users/fish/work/Migration/edk2/Build/GccShellPkg/DEBUG_XCODE32/IA32/GccShellPkg/Shell/DEBUG/Shell.pecoff</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">GenFw: ERROR 1000: Unknown option</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp; --xip</span></big><br
+ style="font-family: monospace;">
+<br>
+This is a bug in the edk2/BaseTools/Conf/build_rule.template.&nbsp; You
+can update your local version in edk2/Conf/build_rule.txt:<br>
+Please remove --xip from the following line:<br>
+<br>
+<big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GenFw --xip -e $(MODULE_TYPE) -o ${dst}
+$(DEBUG_DIR)(+)$(MODULE_NAME).pecoff </span><br
+ style="font-family: monospace;">
+</big><br>
 <br>
 <span style="font-weight: bold;"></span>
 </body>
