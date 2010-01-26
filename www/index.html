@@ -34,14 +34,24 @@ the edk2 directory.<br>
 <br>
 </big>
 <h3><big>Checkout the gcc-shell project from source control: </big></h3>
-<big><br>
-<big><span style="font-family: monospace;">cd edk2</span><br
+<br>
+<table border="1" cellpadding="2" cellspacing="2" width="100%">
+  <tbody>
+    <tr>
+      <td><big><span style="font-family: monospace;">cd edk2</span><br
  style="font-family: monospace;">
-<big><span style="font-family: monospace;"><small>svn co
-https://gcc-shell.tianocore.org/svn/gcc-shell/trunk/GccShellPkg
-GccShellPkg --username username</small><br>
-</span></big></big><br>
-</big>
+      <big><span style="font-family: monospace;"><small>svn co <a
+ href="https://gcc-shell.svn.sourceforge.net/svnroot/gcc-shell/trunk/GccShellPkg">https://gcc-shell.svn.sourceforge.net/svnroot/gcc-shell/trunk/GccShellPkg</a>
+GccShellPkg --username username</small></span></big></big></td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="build-step-title"> </h3>
+<h3 class="build-step-title"> </h3>
+<h3 class="build-step-title">
+</h3>
+<h3 class="build-step-title"> </h3>
+<br>
 <h3><big>Build GccShellPkg: </big></h3>
 <br>
 <big>Follow the <a
@@ -241,7 +251,8 @@ RVCT31_TOOLS_PATH to match the location of your RVCT install.<br>
 "/cygdrive/c/Program
 Files/ARM/RVCT/Programs/3.1/761/win_32-pentium/armcc"
 --cpu
-Cortex-A8&nbsp; --c90 -c -g -O2 --no_autoinline --asm --gnu --apcs
+Cortex-A8&nbsp;
+--c90 -c -g -O2 --no_autoinline --asm --gnu --apcs
 /interwork --signed_chars --no_unaligned_access --split_sections
 --preinclude AutoGen.h --diag_warning 167 -o
 /cygdrive/c/work/edk2/Build/BeagleBoard/DEBUG_RVCT31CYGWIN/ARM/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/./PcdLib.obj
@@ -293,7 +304,8 @@ can update your local version in edk2/Conf/build_rule.txt:<br>
 Please remove --xip from the following line:<br>
 <br>
 <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-GenFw --xip -e $(MODULE_TYPE) -o ${dst}
+GenFw
+--xip -e $(MODULE_TYPE) -o ${dst}
 $(DEBUG_DIR)(+)$(MODULE_NAME).pecoff </span><br
  style="font-family: monospace;">
 </big><br>
