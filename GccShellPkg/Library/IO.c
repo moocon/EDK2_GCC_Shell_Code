@@ -54,7 +54,7 @@ typedef struct _pstate {
   // Input
   //
   POINTER fmt;
-  VA_LIST args;
+  // VA_LIST args; copy of VA_LIST is not portable
 
   //
   // Output
@@ -102,7 +102,8 @@ PRINT_MODE mPrintMode;
 //
 UINTN
 _Print (
-  IN PRINT_STATE     *ps
+  IN PRINT_STATE     *ps,
+  IN VA_LIST         args
   );
 
 INTN
@@ -283,8 +284,7 @@ Returns:
   ps.Output   = Output;
   ps.Context  = spc;
   ps.fmt.u.pw = fmt;
-  VA_COPY (ps.args, args);
-  _Print (&ps);
+  _Print (&ps, args);
 }
 
 UINTN
@@ -635,13 +635,11 @@ Returns:
     ps.fmt.u.pc   = fmta;
   }
 
-  VA_COPY (ps.args, args);
-
   if (Column != (UINTN) -1) {
     Out->SetCursorPosition (Out, Column, Row);
   }
 
-  return _Print (&ps);
+  return _Print (&ps, args);
 }
 
 UINTN
@@ -911,7 +909,8 @@ PITEM (
 
 UINTN
 _Print (
-  IN PRINT_STATE     *ps
+  IN PRINT_STATE     *ps,
+  IN VA_LIST         args
   )
 /*++
 
@@ -1046,7 +1045,7 @@ Returns:
         break;
 
       case '*':
-        *Item.WidthParse = VA_ARG (ps->args, UINTN);
+        *Item.WidthParse = VA_ARG (args, UINTN);
         break;
 
       case '1':
@@ -1067,7 +1066,7 @@ Returns:
         break;
 
       case 'a':
-        Item.Item.u.pc  = VA_ARG (ps->args, CHAR8 *);
+        Item.Item.u.pc  = VA_ARG (args, CHAR8 *);
         Item.Item.Ascii = TRUE;
         if (!Item.Item.u.pc) {
           Item.Item.u.pc = "(null)";
@@ -1077,7 +1076,7 @@ Returns:
         break;
 
       case 's':
-        Item.Item.u.pw = VA_ARG (ps->args, CHAR16 *);
+        Item.Item.u.pw = VA_ARG (args, CHAR16 *);
         if (!Item.Item.u.pw) {
           Item.Item.u.pw = L"(null)";
         }
@@ -1087,7 +1086,7 @@ Returns:
 
       case 'c':
         Item.Item.u.pw    = Item.Scratch;
-        Item.Item.u.pw[0] = (CHAR16) VA_ARG (ps->args, UINTN);
+        Item.Item.u.pw[0] = (CHAR16) VA_ARG (args, UINTN);
         Item.Item.u.pw[1] = 0;
         break;
 
@@ -1103,13 +1102,13 @@ Returns:
         Item.Item.u.pw = Item.Scratch;
         ValueToHex (
           Item.Item.u.pw,
-          Item.Long ? VA_ARG (ps->args, UINT64) : VA_ARG (ps->args, UINTN)
+          Item.Long ? VA_ARG (args, UINT64) : VA_ARG (args, UINTN)
           );
 
         break;
 
       case 'g':
-        TmpGUID = VA_ARG (ps->args, EFI_GUID *);
+        TmpGUID = VA_ARG (args, EFI_GUID *);
         if (TmpGUID != NULL) {
           Item.Item.u.pw = Item.Scratch;
           GuidToString (Item.Item.u.pw, TmpGUID);
@@ -1121,18 +1120,18 @@ Returns:
         ValueToString (
           Item.Item.u.pw,
           Item.Comma,
-          Item.Long ? VA_ARG (ps->args, UINT64) : VA_ARG (ps->args, INTN)
+          Item.Long ? VA_ARG (args, UINT64) : VA_ARG (args, INTN)
           );
         break;
 
       case 't':
         Item.Item.u.pw = Item.Scratch;
-        TimeToString (Item.Item.u.pw, VA_ARG (ps->args, EFI_TIME *));
+        TimeToString (Item.Item.u.pw, VA_ARG (args, EFI_TIME *));
         break;
 
       case 'r':
         Item.Item.u.pw = Item.Scratch;
-        StatusToString (Item.Item.u.pw, VA_ARG (ps->args, EFI_STATUS));
+        StatusToString (Item.Item.u.pw, VA_ARG (args, EFI_STATUS));
         break;
 
       case 'n':
@@ -1981,7 +1980,6 @@ Returns:
   ps.Output     = _DbgOut;
   ps.fmt.Ascii  = TRUE;
   ps.fmt.u.pc   = fmt;
-  VA_COPY (ps.args, args);
   ps.Attr       = EFI_TEXT_ATTR (EFI_LIGHTGRAY, EFI_RED);
 
   DbgOut        = LibRuntimeDebugOut;
@@ -2023,7 +2021,7 @@ Returns:
     ps.SetAttr (ps.Context, attr);
   }
 
-  _Print (&ps);
+  _Print (&ps, args);
 
   //
   // Restore original attributes
