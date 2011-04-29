@@ -226,6 +226,7 @@ Returns:
   DHCP4_OP  *OptionOverloadPtr;
   DHCP4_OP  *OpPtr;
   UINTN     OptionLen;
+  UINT8     *Data;
 
   //
   // Do nothing if Packet pointer is NULL.
@@ -259,7 +260,8 @@ Returns:
       return NULL;
     }
 
-    OptionLen = (MaxMessageSizePtr->data[0] << 8) | MaxMessageSizePtr->data[1];
+    Data = &MaxMessageSizePtr->data[0];
+    OptionLen = (Data[0] << 8) | Data[1];
 
     //
     // If the maximum message length is less than the minimum DHCP4 packet length,

@@ -207,7 +207,7 @@ Notes:
   UINT64                          PciEAddress;
   UINT64                          Value;
   UINT32                          SegmentNumber;
-  EFI_IO_WIDTH                    Width;
+  EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH   Width;
   EFI_ACCESS_TYPE                 AccessType;
   UINT64                          Buffer;
   UINTN                           Index;
@@ -523,7 +523,7 @@ Notes:
     } else if (AccessType == EfiPciEConfig) {
       IoDev->Pci.Write (IoDev, Width, PciEAddress, 1, &Buffer);
     } else {
-      WriteMem (Width, Address, 1, &Value);
+      WriteMem ((EFI_IO_WIDTH)Width, Address, 1, &Value);
     }
 
     Status = EFI_SUCCESS;
@@ -548,7 +548,7 @@ Notes:
       IoDev->Pci.Read (IoDev, Width, PciEAddress, 1, &Buffer);
     } else {
       PrintToken (STRING_TOKEN (STR_IOMOD_HMEM), HiiHandle);
-      ReadMem (Width, Address, 1, &Buffer);
+      ReadMem ((EFI_IO_WIDTH)Width, Address, 1, &Buffer);
     }
 
     PrintToken (STRING_TOKEN (STR_IOMOD_ADDRESS), HiiHandle, Address);
@@ -591,7 +591,7 @@ Notes:
       IoDev->Pci.Read (IoDev, Width, PciEAddress, 1, &Buffer);
     } else {
       PrintToken (STRING_TOKEN (STR_IOMOD_HMEM), HiiHandle);
-      ReadMem (Width, Address, 1, &Buffer);
+      ReadMem ((EFI_IO_WIDTH)Width, Address, 1, &Buffer);
     }
 
     PrintToken (STRING_TOKEN (STR_IOMOD_ADDRESS), HiiHandle, Address);
@@ -635,7 +635,7 @@ Notes:
       } else if (AccessType == EfiPciEConfig) {
         IoDev->Pci.Write (IoDev, Width, PciEAddress, 1, &Buffer);
       } else {
-        WriteMem (Width, Address, 1, &Buffer);
+        WriteMem ((EFI_IO_WIDTH)Width, Address, 1, &Buffer);
       }
     } else {
       PrintToken (STRING_TOKEN (STR_IOMOD_ERROR), HiiHandle);
