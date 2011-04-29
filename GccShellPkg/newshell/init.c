@@ -657,10 +657,10 @@ Returns:
     PrintToken (
       STRING_TOKEN (STR_NSHELL_VERSION),
       HiiNewshellHandle,
-      (ST->Hdr.Revision >> 16),
-      (ST->Hdr.Revision & 0xffff),
-      (ST->FirmwareRevision >> 16),
-      (ST->FirmwareRevision & 0xffff),
+      (UINTN)(ST->Hdr.Revision >> 16),
+      (UINTN)(ST->Hdr.Revision & 0xffff),
+      (UINTN)(ST->FirmwareRevision >> 16),
+      (UINTN)(ST->FirmwareRevision & 0xffff),
       EFI_SHELL_ENHANCED_MODE_VER
       );
     //
