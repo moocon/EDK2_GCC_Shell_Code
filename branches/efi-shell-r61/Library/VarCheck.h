@@ -41,7 +41,7 @@ typedef enum {
   ARG_PARTIALLY_QUOTED  = 0x2,
   ARG_FIRST_HALF_QUOTED = 0x4,
   ARG_FIRST_CHAR_IS_ESC = 0x8
-};
+} SHELL_ARG_EXPR;
 
 typedef struct {
   CHAR16                    *FlagStr;
