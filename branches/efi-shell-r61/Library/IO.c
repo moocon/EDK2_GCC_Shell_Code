@@ -1928,8 +1928,8 @@ LibGetPageBreak (
   return mPrintMode.PageBreak;
 }
 
+#if 0
 STATIC
-
 BOOLEAN
 GetOutputPause (
   VOID
@@ -1937,6 +1937,7 @@ GetOutputPause (
 {
   return mPrintMode.OutputPause;
 }
+#endif
 
 INTN
 DbgPrint (
