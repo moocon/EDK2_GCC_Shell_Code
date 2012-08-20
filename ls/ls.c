@@ -917,14 +917,14 @@ IsMatch (
 
   if ((IsMatch && mIgnoreAttribute) ||
       (IsMatch && !mAttributes && !(Info->Attribute & EFI_FILE_HIDDEN) && !(Info->Attribute & EFI_FILE_SYSTEM)) ||
-      IsMatch &&
+      (IsMatch &&
       mAttributes &&
       (
         (mAttribA ? (Info->Attribute & EFI_FILE_ARCHIVE ? TRUE : FALSE) : TRUE) &&
       (mAttribH ? (Info->Attribute & EFI_FILE_HIDDEN ? TRUE : FALSE) : TRUE) &&
       (mAttribR ? (Info->Attribute & EFI_FILE_READ_ONLY ? TRUE : FALSE) : TRUE) &&
       (mAttribS ? (Info->Attribute & EFI_FILE_SYSTEM ? TRUE : FALSE) : TRUE) &&
-      (mAttribD ? (Info->Attribute & EFI_FILE_DIRECTORY ? TRUE : FALSE) : TRUE)
+      (mAttribD ? (Info->Attribute & EFI_FILE_DIRECTORY ? TRUE : FALSE) : TRUE))
     )
       ) {
     IsMatch = TRUE;

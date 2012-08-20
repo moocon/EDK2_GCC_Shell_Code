@@ -578,7 +578,7 @@ Returns:
     //
     if (SrcArg->Status == EFI_SUCCESS &&
         (SrcArg->Info->Attribute & EFI_FILE_DIRECTORY) &&
-        (DstArg->Status == EFI_SUCCESS && (DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || DstMustDir && DstHandle)
+        (DstArg->Status == EFI_SUCCESS && ((DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || (DstMustDir && DstHandle)))
         ) {
       if (StrCmp (SrcFilePath, DstFilePath) == 0) {
         PrintToken (STRING_TOKEN (STR_CP_CANNOT_COPY_ITSELF), HiiCpyHandle, L"cp/copy", SrcArg->FullName);
@@ -592,7 +592,7 @@ Returns:
     // we need to compose a full name of dir\file for the source
     //
     if (SrcArg->Status == EFI_SUCCESS &&
-      (DstArg->Status == EFI_SUCCESS && (DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || DstMustDir && DstHandle)) {
+      (DstArg->Status == EFI_SUCCESS && ((DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || (DstMustDir && DstHandle)))) {
       if (DstFullName) {
         FreePool (DstFullName);
       }
@@ -1789,7 +1789,7 @@ Returns:
     //
     if (SrcArg->Status == EFI_SUCCESS &&
         !(SrcArg->Info->Attribute & EFI_FILE_DIRECTORY) &&
-        (DstArg->Status == EFI_SUCCESS && (DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || DstDir && DstHandle)
+        (DstArg->Status == EFI_SUCCESS && ((DstArg->Info->Attribute & EFI_FILE_DIRECTORY) || (DstDir && DstHandle)))
         ) {
       if (DstFullName) {
         FreePool (DstFullName);
