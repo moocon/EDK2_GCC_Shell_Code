@@ -1183,7 +1183,7 @@ GetDriverName (
       *DriverName = LibDevicePathToStr (Image->FilePath);
     }
   } else {
-    LibGetDriverName (DriverBindingHandle, Language, DriverName);
+    LibGetDriverName (DriverBindingHandle, (CHAR8*)Language, DriverName);
   }
 
   return EFI_SUCCESS;
@@ -1598,14 +1598,14 @@ Returns:
         Image = FALSE;
         Status = GetDriverName (
                   DriverBindingHandleBuffer[Index],
-                  Language,
+                  (UINT8*)Language,
                   FALSE,
                   &DriverName
                   );
         if (DriverName == NULL) {
           Status = GetDriverName (
                     DriverBindingHandleBuffer[Index],
-                    Language,
+                    (UINT8*)Language,
                     TRUE,
                     &DriverName
                     );
@@ -1792,7 +1792,7 @@ Returns:
 
   Status = GetDriverName (
             Handle,
-            Language,
+            (UINT8*)Language,
             FALSE,
             &DriverName
             );
@@ -1806,7 +1806,7 @@ Returns:
 
   Status = GetDriverName (
             Handle,
-            Language,
+            (UINT8*)Language,
             TRUE,
             &DriverName
             );

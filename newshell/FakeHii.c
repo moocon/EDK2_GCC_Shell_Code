@@ -320,7 +320,7 @@ InsertStringPackage (
   if (Language == NULL) {
     return EFI_OUT_OF_RESOURCES;
   }
-  strcpya (Language, (UINT8 *) PackageHdr + HeaderSize - LanguageSize);
+  strcpya (Language, (CHAR8*) ((UINT8 *) PackageHdr + HeaderSize - LanguageSize));
   for (Link = PackageList->StringPkgHdr.Flink; Link != &PackageList->StringPkgHdr; Link = Link->Flink) {
     StringPackage = CR (Link, FAKE_HII_STRING_PACKAGE, Entry, FAKE_HII_STRING_PACKAGE_SIGNATURE);
     if (CompareLanguage (Language, StringPackage->StringPkgHdr->Language)) {
@@ -770,7 +770,7 @@ FakeHiiGetString (
   StringPackage = NULL;
   for (Link = DatabaseRecord->StringPkgHdr.Flink; Link != &DatabaseRecord->StringPkgHdr; Link = Link->Flink) {
     StringPackage = CR (Link, FAKE_HII_STRING_PACKAGE, Entry, FAKE_HII_STRING_PACKAGE_SIGNATURE);
-    if (CompareLanguage (StringPackage->StringPkgHdr->Language, (UINT8 *) Language)) {
+    if (CompareLanguage (StringPackage->StringPkgHdr->Language, (CHAR8 *) Language)) {
       Matched = TRUE;
       break;
     }

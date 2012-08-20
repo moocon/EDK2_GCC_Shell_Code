@@ -86,8 +86,8 @@ typedef struct _pstate {
 typedef struct {
   BOOLEAN PageBreak;
   BOOLEAN AutoWrap;
-  INTN    MaxRow;
-  INTN    MaxColumn;
+  UINTN   MaxRow;
+  UINTN   MaxColumn;
   INTN    InitRow;
   INTN    Row;
   INTN    Column;
@@ -1575,7 +1575,7 @@ Returns:
 {
   BOOLEAN       Done;
   UINTN         Column;
-  INTN          Row;
+  UINTN         Row;
   UINTN         StartColumn;
   UINTN         Update;
   UINTN         Delete;
