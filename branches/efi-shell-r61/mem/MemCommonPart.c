@@ -149,7 +149,7 @@ Returns:
     return EFI_SUCCESS;
   }
 
-  Address = (AddressStr) ? Xtoi (AddressStr) : (UINT64) SystemTable;
+  Address = (AddressStr) ? Xtoi (AddressStr) : (UINT64)(UINTN) SystemTable;
   Size    = (SizeStr) ? Xtoi (SizeStr) : 512;
 
   //
@@ -233,7 +233,7 @@ Returns:
   MMIo                  = FALSE;
   AddressStr            = NULL;
   SizeStr               = NULL;
-  Address               = (UINT64) SystemTable;
+  Address               = (UINT64)(UINTN) SystemTable;
   Size                  = 512;
   RetCode               = LibCheckVariables (SI, MemCheckList, &ChkPck, &Useful);
   if (VarCheckOk != RetCode) {

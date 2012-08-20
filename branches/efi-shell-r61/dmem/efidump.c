@@ -352,8 +352,8 @@ DumpSystemTable (
     PrintToken (STRING_TOKEN (STR_DEBUG_STD_ERROR_ON), HiiDmemHandle, LibDevicePathToStr (DevicePath));
   }
 
-  PrintToken (STRING_TOKEN (STR_DEBUG_RUNTIME_SERVICES), HiiDmemHandle, (UINT64) Tbl.Sys->RuntimeServices);
-  PrintToken (STRING_TOKEN (STR_DEBUG_BOOT_SERVICES), HiiDmemHandle, (UINT64) Tbl.Sys->BootServices);
+  PrintToken (STRING_TOKEN (STR_DEBUG_RUNTIME_SERVICES), HiiDmemHandle, (UINT64)(UINTN) Tbl.Sys->RuntimeServices);
+  PrintToken (STRING_TOKEN (STR_DEBUG_BOOT_SERVICES), HiiDmemHandle, (UINT64)(UINTN) Tbl.Sys->BootServices);
 
   EFI64_CODE (
     Status = LibGetSystemConfigurationTable(&gEfiSalSystemTableGuid, &SalSystemTable);
@@ -364,22 +364,22 @@ DumpSystemTable (
   
   Status = LibGetSystemConfigurationTable (&gEfiAcpiTableGuid, &AcpiTable);
   if (!EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_DEBUG_ACPI_TABLE), HiiDmemHandle, (UINT64) AcpiTable);
+    PrintToken (STRING_TOKEN (STR_DEBUG_ACPI_TABLE), HiiDmemHandle, (UINT64)(UINTN) AcpiTable);
   }
 
   Status = LibGetSystemConfigurationTable (&gEfiAcpi20TableGuid, &Acpi20Table);
   if (!EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_DEBUG_APCI_2_TABLE), HiiDmemHandle, (UINT64) Acpi20Table);
+    PrintToken (STRING_TOKEN (STR_DEBUG_APCI_2_TABLE), HiiDmemHandle, (UINT64)(UINTN) Acpi20Table);
   }
 
   Status = LibGetSystemConfigurationTable (&gEfiMpsTableGuid, &MpsTable);
   if (!EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_DEBUG_MPS_TABLE), HiiDmemHandle, (UINT64) MpsTable);
+    PrintToken (STRING_TOKEN (STR_DEBUG_MPS_TABLE), HiiDmemHandle, (UINT64)(UINTN) MpsTable);
   }
 
   Status = LibGetSystemConfigurationTable (&gEfiSmbiosTableGuid, &SMBIOSTable);
   if (!EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_DEBUG_SMBIOS_TABLE), HiiDmemHandle, (UINT64) SMBIOSTable);
+    PrintToken (STRING_TOKEN (STR_DEBUG_SMBIOS_TABLE), HiiDmemHandle, (UINT64)(UINTN) SMBIOSTable);
   }
 }
 
