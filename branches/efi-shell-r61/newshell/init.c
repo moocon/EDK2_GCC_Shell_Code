@@ -23,7 +23,7 @@ Abstract:
 #include "nshell.h"
 
 extern UINT8    STRING_ARRAY_NAME[];
-extern BOOLEAN  gHiiInitialized = FALSE;
+BOOLEAN  gHiiInitialized = FALSE;
 
 //
 // This is the generated header file which includes whatever needs to be exported (strings + IFR)
