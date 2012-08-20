@@ -24,7 +24,7 @@ Revision History
 #ifndef _D_PATH_H
 #define _D_PATH_H
 
-#define NextStrA(a) ((UINT8 *) (((UINT8 *) (a)) + strlena (a) + 1))
+#define NextStrA(a) (CHAR8*)((UINT8 *) (((UINT8 *) (a)) + strlena (a) + 1))
 
 #include EFI_GUID_DEFINITION (PcAnsi)
 

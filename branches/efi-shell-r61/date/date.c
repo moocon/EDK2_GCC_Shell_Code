@@ -53,8 +53,8 @@ STATIC
 BOOLEAN
 GetNumber (
   IN      CHAR16  *Str,
-  IN OUT  INTN    *Position,
-  IN OUT  INTN    *Number,
+  IN OUT  UINTN   *Position,
+  IN OUT  UINTN   *Number,
   IN BOOLEAN      EndNum
   );
 
@@ -330,8 +330,8 @@ STATIC
 BOOLEAN
 GetNumber (
   IN      CHAR16    *Str,
-  IN OUT  INTN      *Position,
-  IN OUT  INTN      *Number,
+  IN OUT  UINTN     *Position,
+  IN OUT  UINTN     *Number,
   IN BOOLEAN        EndNum
   )
 {
