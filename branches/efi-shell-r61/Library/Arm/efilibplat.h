@@ -35,3 +35,4 @@ InitializeLibPlatform (
 #define MIN_ALIGNMENT_SIZE  4
 
 #endif
+
