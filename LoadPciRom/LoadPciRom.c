@@ -24,7 +24,7 @@ Revision History
 
 #include "EfiShellLib.h"
 #include "LoadPciRom.h"
-#include "Pci22.h"
+#include "pci22.h"
 
 extern UINT8    STRING_ARRAY_NAME[];
 

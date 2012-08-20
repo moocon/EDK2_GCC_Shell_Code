@@ -23,7 +23,7 @@ Revision History
 
 #include "shelle.h"
 #include "shellenvguid.h"
-#include "acpi.h"
+#include "Acpi.h"
 
 STATIC CHAR16 *SEnvDP_IlleagalStr[] = { L"Illegal" };
 

@@ -25,7 +25,7 @@ FILE_GUID            = 0F4C0280-B581-4940-AF19-D0CB5559CC95
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
-  ..\ShCommonStrings.uni
+  ../ShCommonStrings.uni
   SmBiosViewStrings.uni
   QueryTable.c
   QueryTable.h
@@ -43,19 +43,19 @@ COMPONENT_TYPE       = APPLICATION
 
 [includes.common]
   .
-  ..\Inc
-  ..\Library
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Core\Dxe
-  $(DEST_DIR)\
-  $(EFI_SOURCE)\Application\Shell\Inc
-  $(EFI_SOURCE)\Application\Shell\Library
+  ../Inc
+  ../Library
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Core/Dxe
+  $(DEST_DIR./
+  $(EFI_SOURCE)/Applicatio./Shels/Inc
+  $(EFI_SOURCE)/Applicatio./Shels/Library
 
 [libraries.common]  
   EfiShellLib

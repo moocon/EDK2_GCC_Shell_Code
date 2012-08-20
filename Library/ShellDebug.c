@@ -19,7 +19,7 @@ Abstract:
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 #include EFI_PROTOCOL_DEFINITION (DebugAssert)
 
 EFI_DEBUG_ASSERT_PROTOCOL *mDebugAssert = NULL;

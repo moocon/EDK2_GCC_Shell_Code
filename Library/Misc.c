@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 #if (PLATFORM == NT32)
 #define LOCAL_EFI_WIN_NT_THUNK_PROTOCOL_GUID \

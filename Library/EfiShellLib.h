@@ -25,7 +25,7 @@ Revision History
 #define _EFI_SHELL_LIB_INCLUDE_
 
 #include "Tiano.h"
-#include "ShellEnv.h"
+#include "shellenv.h"
 #include "pci22.h"
 
 #include EFI_ARCH_PROTOCOL_DEFINITION (Bds)
@@ -51,7 +51,7 @@ Revision History
 #include EFI_GUID_DEFINITION (PrimaryConsoleOutDevice)
 #include EFI_GUID_DEFINITION (PrimaryStandardErrorDevice)
 #include EFI_GUID_DEFINITION (SalSystemTable)
-#include EFI_GUID_DEFINITION (Smbios)
+#include EFI_GUID_DEFINITION (SmBios)
 #include EFI_GUID_DEFINITION (StandardErrorDevice)
 #include EFI_GUID_DEFINITION (FrameworkDevicePath)
 #include EFI_PROTOCOL_DEFINITION (AbsolutePointer)
@@ -67,7 +67,7 @@ Revision History
 #include EFI_PROTOCOL_DEFINITION (DebugPort)
 #include EFI_PROTOCOL_DEFINITION (DebugSupport)
 #include EFI_PROTOCOL_DEFINITION (Decompress)
-#include EFI_PROTOCOL_DEFINITION (DeviceIO)
+#include EFI_PROTOCOL_DEFINITION (DeviceIo)
 #include EFI_PROTOCOL_DEFINITION (DevicePath)
 #include EFI_PROTOCOL_DEFINITION (DevicePathFromText)
 #include EFI_PROTOCOL_DEFINITION (DevicePathToText)
@@ -111,7 +111,7 @@ Revision History
 #include EFI_PROTOCOL_DEFINITION (PciRootBridgeIo)
 #include EFI_PROTOCOL_DEFINITION (PlatformDriverOverride)
 #include EFI_PROTOCOL_DEFINITION (PxeBaseCode)
-#include EFI_PROTOCOL_DEFINITION (PxeBaseCodeCallback)
+#include EFI_PROTOCOL_DEFINITION (PxeBaseCodeCallBack)
 #include EFI_PROTOCOL_DEFINITION (ScsiIo)
 #include EFI_PROTOCOL_DEFINITION (ScsiPassThru)
 #include EFI_PROTOCOL_DEFINITION (SectionExtraction)
@@ -152,7 +152,7 @@ Revision History
 #include EFI_PROTOCOL_DEFINITION (PlatformToDriverConfiguration)
 
 #include "efilibplat.h"
-#include "efipart.h"
+#include "EfiPart.h"
 #include "ShellDebug.h"
 #include "CRC.h"
 #include "DPath.h"

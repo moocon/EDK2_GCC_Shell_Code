@@ -19,7 +19,7 @@ Abstract:
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 #include EFI_PROTOCOL_DEFINITION (Performance)
 

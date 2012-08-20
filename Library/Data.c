@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 //
 // ShellLibInitialized - TRUE once InitializeShellLib() is called for the first time

@@ -39,7 +39,7 @@ Abstract:
 #include "libinputbar.h"
 #include "libmenubar.h"
 
-#include "libmisc.h"
+#include "libMisc.h"
 
 #include "libclipboard.h"
 

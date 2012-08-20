@@ -24,7 +24,7 @@ Revision History
 --*/
 
 #include "debug.h"
-#include "Efipart.h"
+#include "EfiPart.h"
 #include "EfiShellLib.h"
 
 #include STRING_DEFINES_FILE

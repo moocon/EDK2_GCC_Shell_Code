@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 #if (EFI_SPECIFICATION_VERSION >= 0x0002000A)
 
