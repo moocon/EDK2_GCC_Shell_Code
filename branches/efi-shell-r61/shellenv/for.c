@@ -24,7 +24,7 @@ Revision History
 #include "shelle.h"
 #include "shellenvguid.h"
 
-/*
+#if 0
 BOOLEAN
 CheckInterValue (
   IN CHAR16                        *wszValueStr,
@@ -190,7 +190,7 @@ Arguments:
 Returns:
   EFI_SUCCESS      The function finished sucessfully
 
---
+--*/
 {
   EFI_BATCH_STATEMENT                *Stmt;
   EFI_LIST_ENTRY                     FileList;
@@ -326,7 +326,8 @@ Done:
     
   return Status;
 }
-*/
+#endif
+
 EFI_STATUS
 SEnvCmdForRun (
   IN EFI_HANDLE                         hImageHandle,
