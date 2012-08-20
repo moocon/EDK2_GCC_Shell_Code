@@ -25,24 +25,24 @@ FILE_GUID            = FAAA94BA-7095-4c0f-8D69-8E00C8328863
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
-  ..\ShCommonStrings.uni
+  ../ShCommonStrings.uni
   PingStrings.uni
   Ping.h
   Ping.c
 
 [includes.common]
-  ..\Inc
-  ..\Library
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Core\Dxe
-  $(EDK_SOURCE)\Foundation\Library\Dxe\Include
-  $(DEST_DIR)\
+  ../Inc
+  ../Library
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Core/Dxe
+  $(EDK_SOURCE)/Foundation/Library/Dxe/Include
+  $(DEST_DIR./
 
 [libraries.common]  
   EfiShellLib

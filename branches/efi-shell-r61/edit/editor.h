@@ -33,7 +33,7 @@ Abstract:
 #include "libstatusbar.h"
 #include "libinputbar.h"
 #include "libmenubar.h"
-#include "libmisc.h"
+#include "libMisc.h"
 //
 // This is the generated header file which includes whatever needs to be exported (strings + IFR)
 //

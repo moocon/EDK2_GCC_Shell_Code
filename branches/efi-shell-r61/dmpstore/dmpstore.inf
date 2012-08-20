@@ -25,24 +25,24 @@ FILE_GUID            = 7185D15A-A0AE-4dd1-A58F-C6EAD28EC9A8
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
-  ..\ShCommonStrings.uni
+  ../ShCommonStrings.uni
   DmpstoreStrings.uni
   dmpstore.c
   dmpstore.h
   
 [includes.common]
   .
-  ..\Inc
-  ..\Library
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Core\Dxe
-  $(DEST_DIR)\
+  ../Inc
+  ../Library
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Core/Dxe
+  $(DEST_DIR./
 
 [libraries.common]  
   EfiShellLib

@@ -45,34 +45,34 @@ COMPONENT_TYPE  = LIBRARY
   HiiSupport.c
 
 [sources.ia32]
-  ia32\math.c
-  ia32\initplat.c
+  IA32/math.c
+  IA32/initplat.c
 
 [sources.ipf]
-  ipf\math.c
-  ipf\initplat.c
-  ipf\palproc.s
-  ipf\salpal.c
+  IPF/math.c
+  IPF/initplat.c
+  IPF/palproc.s
+  IPF/salpal.c
 
 [sources.EBC]
-  EBC\math.c
-  EBC\initplat.c
+  Ebc/math.c
+  Ebc/initplat.c
   
 [sources.x64]
-  ipf\math.c
-  ia32\initplat.c
+  IPF/math.c
+  IA32/initplat.c
 
 [includes.common]
   .
-  ..\Inc
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\Core\Dxe
+  ../Inc
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/Core/Dxe
 
 [libraries.common]
   EdkFrameworkProtocolLib

@@ -25,7 +25,7 @@ FILE_GUID            = 6394CF3D-D3DC-4f69-926D-AF9FFE59F922
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
-  ..\ShCommonStrings.uni
+  ../ShCommonStrings.uni
   IfConfigStrings.uni
   IfConfig.c
   IfConfig.h
@@ -33,18 +33,18 @@ COMPONENT_TYPE       = APPLICATION
   ShellNetHelper.h
   
 [includes.common]
-  ..\Inc
-  ..\Library
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Core\Dxe
-  $(EDK_SOURCE)\Foundation\Library\Dxe\Include
-  $(DEST_DIR)\
+  ../Inc
+  ../Library
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Core/Dxe
+  $(EDK_SOURCE)/Foundation/Library/Dxe/Include
+  $(DEST_DIR./
 
 [libraries.common]
   EfiShellLib

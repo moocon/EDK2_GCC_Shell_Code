@@ -22,7 +22,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 INTN
 StrCmp (

@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 VOID
 LibCheckVarFreeVarList (

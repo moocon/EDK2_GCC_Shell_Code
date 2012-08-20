@@ -20,7 +20,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 extern EFI_UNICODE_COLLATION_PROTOCOL LibStubUnicodeInterface;
 

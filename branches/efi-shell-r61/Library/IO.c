@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 #define PRINT_STRING_LEN        1024
 #define PRINT_ITEM_BUFFER_LEN   100

@@ -25,7 +25,7 @@ FILE_GUID            = A6A236DB-F3FB-4f7f-93BC-0AF7DAA583B9
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
-..\ShCommonStrings.uni
+../ShCommonStrings.uni
 CompressStrings.uni
 compressMain.c
 compress.c
@@ -34,17 +34,17 @@ compress.h
 
 [includes.common]
   .
-  ..\Inc
-  ..\Library
-  $(EDK_SOURCE)\Foundation
-  $(EDK_SOURCE)\Foundation\Include
-  $(EDK_SOURCE)\Foundation\Include\IndustryStandard
-  $(EDK_SOURCE)\Foundation\Efi
-  $(EDK_SOURCE)\Foundation\Efi\Include
-  $(EDK_SOURCE)\Foundation\FrameWork
-  $(EDK_SOURCE)\Foundation\FrameWork\Include
-  $(EDK_SOURCE)\Foundation\Core\Dxe
-  $(DEST_DIR)\
+  ../Inc
+  ../Library
+  $(EDK_SOURCE)/Foundation
+  $(EDK_SOURCE)/Foundation/Include
+  $(EDK_SOURCE)/Foundation/Include/IndustryStandard
+  $(EDK_SOURCE)/Foundation/Efi
+  $(EDK_SOURCE)/Foundation/Efi/Include
+  $(EDK_SOURCE)/Foundation/FrameWork
+  $(EDK_SOURCE)/Foundation/FrameWork/Include
+  $(EDK_SOURCE)/Foundation/Core/Dxe
+  $(DEST_DIR./
 
 [libraries.common]  
   EfiShellLib

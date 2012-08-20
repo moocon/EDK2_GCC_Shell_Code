@@ -21,7 +21,7 @@ Revision History
 
 --*/
 
-#include "EfiShelllib.h"
+#include "EfiShellLib.h"
 
 typedef struct _PATH_COMPONENTS {
   CHAR16                  *Name;

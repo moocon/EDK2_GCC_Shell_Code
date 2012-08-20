@@ -36,7 +36,7 @@ extern "C"
 #endif
 
 #include "Tiano.h"
-#include "linkedlist.h"
+#include "LinkedList.h"
 
 #include EFI_PROTOCOL_DEFINITION (FileInfo)
 #include EFI_PROTOCOL_DEFINITION (SimpleFileSystem)
