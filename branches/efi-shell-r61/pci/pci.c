@@ -1956,7 +1956,7 @@ Returns:
     INDEX_OF (&(CardBus->IoBase0)),
     Io32Bit ? L"          32 bit" : L"          16 bit",
     CardBus->IoBase0 & (Io32Bit ? 0xfffffffc : 0x0000fffc),
-    CardBus->IoLimit0 & (Io32Bit ? 0xffffffff : 0x0000ffff) | 0x00000003
+    (CardBus->IoLimit0 & (Io32Bit ? 0xffffffff : 0x0000ffff)) | 0x00000003
     );
 
   Io32Bit = (BOOLEAN) (CardBus->IoBase1 & PCI_BIT_0);
@@ -1966,7 +1966,7 @@ Returns:
     INDEX_OF (&(CardBus->IoBase1)),
     Io32Bit ? L"          32 bit" : L"          16 bit",
     CardBus->IoBase1 & (Io32Bit ? 0xfffffffc : 0x0000fffc),
-    CardBus->IoLimit1 & (Io32Bit ? 0xffffffff : 0x0000ffff) | 0x00000003
+    (CardBus->IoLimit1 & (Io32Bit ? 0xffffffff : 0x0000ffff)) | 0x00000003
     );
 
   //

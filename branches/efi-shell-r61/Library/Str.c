@@ -421,7 +421,7 @@ Returns:
         return (UINTN) -1;
       }
 
-      u = u << 4 | c - (c >= 'A' ? 'A' - 10 : '0');
+      u = (u << 4) | (c - (c >= 'A' ? 'A' - 10 : '0'));
     } else {
       break;
     }
@@ -472,7 +472,7 @@ Returns:
   c = *(str++);
   while (c) {
     if (c >= '0' && c <= '9') {
-      if (u > m || u == m && c - '0' > (INTN) n) {
+      if ((u > m) || ((u == m) && (c - '0' > (INTN) n))) {
         return (UINTN) -1;
       }
 

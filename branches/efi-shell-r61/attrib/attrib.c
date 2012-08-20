@@ -438,7 +438,7 @@ Returns:
     //
     Info = Arg->Info;
     if (Add || Remove) {
-      Info->Attribute = Info->Attribute & (~Remove) | Add;
+      Info->Attribute = (Info->Attribute & (~Remove)) | Add;
       Status = Arg->Handle->SetInfo (
                               Arg->Handle,
                               &gEfiFileInfoGuid,
