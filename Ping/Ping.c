@@ -20,7 +20,7 @@ Abstract:
 --*/
 
 #include "EfiShellLib.h"
-#include "CpuFuncs.h"
+//#include "CpuFuncs.h"
 #include EFI_ARCH_PROTOCOL_DEFINITION (Cpu)
 #include EFI_PROTOCOL_DEFINITION (Ip4)
 #include "Ping.h"
@@ -114,6 +114,8 @@ UINT32            RttSum;
 UINT32            RttMin;
 UINT32            RttMax;
 
+EFI_CPU_ARCH_PROTOCOL  *gCpu = NULL;
+
 STATIC
 UINT64
 GetTimerValue (
@@ -135,7 +137,22 @@ Returns:
 
 --*/
 {
-  return EfiReadTsc ();
+  static UINT64          CurrentTick = 0;
+  UINT64                 TimerPeriod;
+  EFI_STATUS             Status;
+
+  ASSERT (gCpu != NULL);
+
+  Status = gCpu->GetTimerValue (gCpu, 0, &CurrentTick, &TimerPeriod);
+  if (EFI_ERROR (Status)) {
+    //
+    // The WinntGetTimerValue will return EFI_UNSUPPORTED. Set the
+    // TimerPeriod by ourselves.
+    //
+    CurrentTick += 1000000;
+  }
+  
+  return CurrentTick;
 }
 
 STATIC
