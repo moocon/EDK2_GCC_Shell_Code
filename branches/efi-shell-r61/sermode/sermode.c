@@ -35,7 +35,7 @@ extern UINT8    STRING_ARRAY_NAME[];
 
 #include EFI_PROTOCOL_DEFINITION (SerialIo)
 
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiSermodeGuid = EFI_SERMODEB_GUID;
 SHELL_VAR_CHECK_ITEM    SermodeCheckList[] = {
   {

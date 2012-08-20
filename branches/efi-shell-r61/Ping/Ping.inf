@@ -52,7 +52,6 @@ COMPONENT_TYPE       = APPLICATION
   ArchProtocolLib
   EdkGuidLib
   EdkFrameworkGuidLib
-  EfiDriverLib
 
 [libraries.Ia32]
   CpuIA32Lib

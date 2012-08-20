@@ -344,7 +344,7 @@ PCIE_EXPLAIN_STRUCT PcieExplainList[] = {
 // Global Variables
 //
 PCI_CONFIG_SPACE  *mConfigSpace;
-EFI_HII_HANDLE    HiiHandle;
+STATIC EFI_HII_HANDLE    HiiHandle;
 EFI_GUID          EfiPciGuid = EFI_PCI_GUID;
 SHELL_VAR_CHECK_ITEM    PciCheckList[] = {
   {

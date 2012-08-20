@@ -59,7 +59,7 @@ BOOLEAN         TypeAscii;
 BOOLEAN         TypeUnicode;
 BOOLEAN         TypeAuto;
 
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiTypeGuid = EFI_TYPE_GUID;
 SHELL_VAR_CHECK_ITEM    TypeCheckList[] = {
   {

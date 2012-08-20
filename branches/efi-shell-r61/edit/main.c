@@ -34,7 +34,7 @@ EFI_BOOTSHELL_CODE(
 //
 // Global Variables
 //
-EFI_HII_HANDLE    HiiHandle;
+EFI_HII_HANDLE    gEditHiiHandle;
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
 EFI_HII_PROTOCOL  *Hii;
 #endif
@@ -127,7 +127,7 @@ Returns:
   }
 #endif
 
-  Status = LibInitializeStrings (&HiiHandle, STRING_ARRAY_NAME, &EfiEditGuid);
+  Status = LibInitializeStrings (&gEditHiiHandle, STRING_ARRAY_NAME, &EfiEditGuid);
 
   if (EFI_ERROR (Status)) {
     return Status;
@@ -137,7 +137,7 @@ Returns:
   if (VarCheckOk != RetCode) {
     switch (RetCode) {
     case VarCheckUnknown:
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_UNKNOWN_FLAG), HiiHandle, L"edit", Useful);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_UNKNOWN_FLAG), gEditHiiHandle, L"edit", Useful);
       break;
 
     default:
@@ -161,10 +161,10 @@ Returns:
         ChkPck.FlagCount > 2 ||
         (ChkPck.FlagCount == 2 && LibCheckVarGetFlag (&ChkPck, L"-b") == NULL)
         ) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"edit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gEditHiiHandle, L"edit");
       Status = EFI_INVALID_PARAMETER;
     } else {
-      PrintToken (STRING_TOKEN (STR_EDIT_VERBOSE_HELP), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_EDIT_VERBOSE_HELP), gEditHiiHandle);
       Status = EFI_SUCCESS;
     }
 
@@ -172,21 +172,21 @@ Returns:
   }
 
   if (ChkPck.ValueCount > 1) {
-    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"edit");
+    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gEditHiiHandle, L"edit");
     Status = EFI_INVALID_PARAMETER;
     goto done;
   }
 
   if (ChkPck.ValueCount == 1) {
     if (!IsValidFileName (ChkPck.VarList->VarStr)) {
-      PrintToken (STRING_TOKEN (STR_EDIT_MAIN_INVALID_FILE_NAME), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_EDIT_MAIN_INVALID_FILE_NAME), gEditHiiHandle);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
   }
 
   if (SI->RedirArgc != 0) {
-    PrintToken (STRING_TOKEN (STR_EDIT_NOREDIRECT), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_NOREDIRECT), gEditHiiHandle);
     Status = EFI_INVALID_PARAMETER;
     goto done;
   }
@@ -195,7 +195,7 @@ Returns:
   if (EFI_ERROR (Status)) {
     Out->ClearScreen (Out);
     Out->EnableCursor (Out, TRUE);
-    PrintToken (STRING_TOKEN (STR_EDIT_MAIN_INIT_FAILED), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_MAIN_INIT_FAILED), gEditHiiHandle);
     goto done;
   }
 
@@ -240,19 +240,19 @@ Returns:
   //
   if (Status == EFI_SUCCESS) {
   } else if (Status == EFI_OUT_OF_RESOURCES) {
-    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_OUT_RESOURCE), HiiHandle, L"edit");
+    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_OUT_RESOURCE), gEditHiiHandle, L"edit");
   } else {
     if (Buffer != NULL) {
       if (StrCmp (Buffer, L"") != 0) {
         //
         // print out the status string
         //
-        PrintToken (STRING_TOKEN (STR_EDIT_MAIN_BUFFER), HiiHandle, Buffer);
+        PrintToken (STRING_TOKEN (STR_EDIT_MAIN_BUFFER), gEditHiiHandle, Buffer);
       } else {
-        PrintToken (STRING_TOKEN (STR_EDIT_MAIN_UNKNOWN_EDITOR_ERR), HiiHandle);
+        PrintToken (STRING_TOKEN (STR_EDIT_MAIN_UNKNOWN_EDITOR_ERR), gEditHiiHandle);
       }
     } else {
-      PrintToken (STRING_TOKEN (STR_EDIT_MAIN_UNKNOWN_EDITOR_ERR), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_EDIT_MAIN_UNKNOWN_EDITOR_ERR), gEditHiiHandle);
     }
   }
 

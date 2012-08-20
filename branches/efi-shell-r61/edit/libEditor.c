@@ -169,31 +169,31 @@ MainEditorInit (
   //
   Status = MainTitleBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_TITLEBAR), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_TITLEBAR), gEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = MainMenuBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_MAINMENU), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_MAINMENU), gEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = MainStatusBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_STATUSBAR), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_STATUSBAR), gEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = MainInputBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_INPUTBAR), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_INPUTBAR), gEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = FileBufferInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_FILEBUFFER), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_FILEBUFFER), gEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
   //
@@ -234,27 +234,27 @@ MainEditorCleanup (
   //
   Status = MainTitleBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_TILEBAR_CLEANUP), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_TILEBAR_CLEANUP), gEditHiiHandle);
   }
 
   Status = MainMenuBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_MENUBAR_CLEANUP), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_MENUBAR_CLEANUP), gEditHiiHandle);
   }
 
   Status = MainStatusBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_STATUSBAR_CLEANUP), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_STATUSBAR_CLEANUP), gEditHiiHandle);
   }
 
   Status = MainInputBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_INPUTBAR_CLEANUP), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_INPUTBAR_CLEANUP), gEditHiiHandle);
   }
 
   Status = FileBufferCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_FILEBUFFER_CLEANUP), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_EDIT_LIBEDITOR_FILEBUFFER_CLEANUP), gEditHiiHandle);
   }
   //
   // restore old mode

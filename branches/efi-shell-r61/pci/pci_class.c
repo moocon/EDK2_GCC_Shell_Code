@@ -30,7 +30,7 @@ Revision History
 //
 // Global Variables
 //
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 
 PCI_CLASS_ENTRY gClassStringList[];
 

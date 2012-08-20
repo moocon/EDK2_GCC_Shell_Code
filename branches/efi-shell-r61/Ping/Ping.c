@@ -27,7 +27,7 @@ Abstract:
 #include STRING_DEFINES_FILE
 extern UINT8 STRING_ARRAY_NAME[];
 
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 
 EFI_GUID  EfiPingGuid = EFI_PING_GUID;
 SHELL_VAR_CHECK_ITEM  PingCheckList[] = {

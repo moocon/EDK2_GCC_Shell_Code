@@ -52,7 +52,7 @@ extern HEFI_EDITOR_GLOBAL_EDITOR  HMainEditor;
 extern BOOLEAN                    HEditorFirst;
 extern BOOLEAN                    HEditorExit;
 
-extern EFI_HII_HANDLE             HiiHandle;
+extern EFI_HII_HANDLE             gHexEditHiiHandle;
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
 extern EFI_HII_PROTOCOL           *Hii;
 #endif

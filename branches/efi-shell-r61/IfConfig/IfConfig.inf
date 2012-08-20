@@ -51,7 +51,6 @@ COMPONENT_TYPE       = APPLICATION
   EdkProtocolLib
   EfiProtocolLib
   EdkGuidLib
-  EfiDriverLib
 
 [nmake.common]
   C_PROJ_FLAGS = $(C_PROJ_FLAGS)

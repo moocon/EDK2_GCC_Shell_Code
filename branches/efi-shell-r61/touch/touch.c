@@ -64,7 +64,7 @@ TouchFreeFileArg (
 //
 // Global Variables
 //
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiTouchGuid = EFI_TOUCH_GUID;
 SHELL_VAR_CHECK_ITEM    TouchCheckList[] = {
   {

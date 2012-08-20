@@ -35,7 +35,7 @@ extern UINTN  EFIDebug;
 //
 // Global Variables
 //
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiErrGuid = EFI_ERR_GUID;
 SHELL_VAR_CHECK_ITEM    ErrCheckList[] = {
   {

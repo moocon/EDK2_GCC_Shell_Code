@@ -182,37 +182,37 @@ Returns:
   //
   Status = HMainTitleBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_TITLE), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_TITLE), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = HMainMenuBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_MAINMENU), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_MAINMENU), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = HMainStatusBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_STATUS), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_STATUS), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = HMainInputBarInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_INPUTBAR), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_INPUTBAR), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = HBufferImageInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_BUFFERIMAGE), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_BUFFERIMAGE), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
 
   Status = HClipBoardInit ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_CLIPBOARD), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MAINEDITOR_CLIPBOARD), gHexEditHiiHandle);
     return EFI_LOAD_ERROR;
   }
   //
@@ -259,32 +259,32 @@ Returns:
   //
   Status = HMainTitleBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_TITLEBAR_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_TITLEBAR_CLEAN), gHexEditHiiHandle);
   }
 
   Status = HMainMenuBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MENUBAR_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_MENUBAR_CLEAN), gHexEditHiiHandle);
   }
 
   Status = HMainStatusBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_STATUSBAR_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_STATUSBAR_CLEAN), gHexEditHiiHandle);
   }
 
   Status = HMainInputBarCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_INPUTBAR_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_INPUTBAR_CLEAN), gHexEditHiiHandle);
   }
 
   Status = HBufferImageCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_BUFFERIMAGE_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_BUFFERIMAGE_CLEAN), gHexEditHiiHandle);
   }
 
   Status = HClipBoardCleanup ();
   if (EFI_ERROR (Status)) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_CLIPBOARD_CLEAN), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBEDITOR_CLIPBOARD_CLEAN), gHexEditHiiHandle);
   }
   //
   // restore old mode

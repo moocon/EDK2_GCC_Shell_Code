@@ -255,9 +255,9 @@ Returns:
     FunctionKeyString = AllocatePool (BufferSize);
 
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
-    Status            = Hii->GetString (Hii, HiiHandle, Item->NameToken, FALSE, NULL, &BufferSize, NameString);
+    Status            = Hii->GetString (Hii, gHexEditHiiHandle, Item->NameToken, FALSE, NULL, &BufferSize, NameString);
 #else
-    Status            = LibGetString (HiiHandle, Item->NameToken, NameString, &BufferSize);
+    Status            = LibGetString (gHexEditHiiHandle, Item->NameToken, NameString, &BufferSize);
 #endif
 
     Width             = max ((StrLen (NameString) + 6), 18);
@@ -267,9 +267,9 @@ Returns:
     }
 
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
-    Status = Hii->GetString (Hii, HiiHandle, Item->FunctionKeyToken, FALSE, NULL, &BufferSize, FunctionKeyString);
+    Status = Hii->GetString (Hii, gHexEditHiiHandle, Item->FunctionKeyToken, FALSE, NULL, &BufferSize, FunctionKeyString);
 #else
-    Status = LibGetString (HiiHandle, Item->FunctionKeyToken, FunctionKeyString, &BufferSize);
+    Status = LibGetString (gHexEditHiiHandle, Item->FunctionKeyToken, FunctionKeyString, &BufferSize);
 #endif
     if (Index >= 10) {
       PrintAt (Col - 1, Row - 1, L"%E%s%N %H%s%N  ", FunctionKeyString, NameString);

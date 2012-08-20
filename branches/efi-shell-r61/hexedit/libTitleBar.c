@@ -212,7 +212,7 @@ Returns:
     // the space for file name is 35 characters
     //
     if (StrLen (FileNameTmp) <= 35) {
-      PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR), HiiHandle, FileNameTmp);
+      PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR), gHexEditHiiHandle, FileNameTmp);
 
       for (Index = StrLen (FileNameTmp); Index < 35; Index++) {
         Print (L" ");
@@ -220,7 +220,7 @@ Returns:
 
     } else {
       for (Index = 0; Index < 32; Index++) {
-        PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR_C), HiiHandle, FileNameTmp[Index]);
+        PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR_C), gHexEditHiiHandle, FileNameTmp[Index]);
       }
       //
       // print "..."
@@ -234,14 +234,14 @@ Returns:
     if (StrLen (HMainEditor.BufferImage->DiskImage->Name) <= 9) {
       PrintToken (
         STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR),
-        HiiHandle,
+        gHexEditHiiHandle,
         HMainEditor.BufferImage->DiskImage->Name
         );
     } else {
       for (Index = 0; Index < 6; Index++) {
         PrintToken (
           STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR_C),
-          HiiHandle,
+          gHexEditHiiHandle,
           HMainEditor.BufferImage->DiskImage->Name[Index]
           );
       }
@@ -253,7 +253,7 @@ Returns:
 
     PrintToken (
       STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR_TWOVARS),
-      HiiHandle,
+      gHexEditHiiHandle,
       HMainEditor.BufferImage->DiskImage->Offset,
       HMainEditor.BufferImage->DiskImage->Offset + HMainEditor.BufferImage->DiskImage->Size - 1
       );
@@ -269,7 +269,7 @@ Returns:
   case MEM_BUFFER:
     PrintToken (
       STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MAINEDITOR_TWOVARS),
-      HiiHandle,
+      gHexEditHiiHandle,
       HMainEditor.BufferImage->MemImage->Offset,
       HMainEditor.BufferImage->MemImage->Offset + HMainEditor.BufferImage->MemImage->Size - 1
       );
@@ -286,15 +286,15 @@ Returns:
   //
   switch (HMainEditor.BufferImage->BufferType) {
   case FILE_BUFFER:
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_FILE), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_FILE), gHexEditHiiHandle);
     break;
 
   case DISK_BUFFER:
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_DISK), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_DISK), gHexEditHiiHandle);
     break;
 
   case MEM_BUFFER:
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MEM), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBTITLEBAR_MEM), gHexEditHiiHandle);
     break;
   }
   //

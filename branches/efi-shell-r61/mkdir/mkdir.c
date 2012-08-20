@@ -49,7 +49,7 @@ MkDir (
 //
 // Global Variables
 //
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiMkdirGuid = EFI_MKDIR_GUID;
 SHELL_VAR_CHECK_ITEM    MkdirCheckList[] = {
   {

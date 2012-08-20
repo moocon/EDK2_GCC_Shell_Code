@@ -43,7 +43,7 @@ extern EFI_EDITOR_GLOBAL_EDITOR MainEditor;
 extern BOOLEAN                  EditorFirst;
 extern BOOLEAN                  EditorExit;
 
-extern EFI_HII_HANDLE           HiiHandle;
+extern EFI_HII_HANDLE           gEditHiiHandle;
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
 extern EFI_HII_PROTOCOL         *Hii;
 #endif
