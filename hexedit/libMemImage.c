@@ -91,7 +91,7 @@ Returns:
   Status = BS->LocateProtocol (
                 &gEfiPciRootBridgeIoProtocolGuid,
                 NULL,
-                &HMemImage.IoFncs
+                (VOID**)&HMemImage.IoFncs
                 );
   if (Status == EFI_NOT_FOUND) {
     //

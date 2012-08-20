@@ -1539,7 +1539,7 @@ Returns:
 
     DevicePath      = NULL;
     BestDeviceName  = NULL;
-    Status          = BS->HandleProtocol (Handle, &gEfiDevicePathProtocolGuid, &DevicePath);
+    Status          = BS->HandleProtocol (Handle, &gEfiDevicePathProtocolGuid, (VOID**)&DevicePath);
 
     Print (L"\n");
     PrintToken (STRING_TOKEN (STR_SHELLENV_PROTID_CONTROLLER_NAME), HiiEnvHandle);
@@ -1979,7 +1979,7 @@ Returns:
 
       if (Prot->Handles[Index] == Handle) {
         Dump    = Verbose ? Prot->DumpInfo : Prot->DumpToken;
-        Status  = BS->HandleProtocol (Handle, &Prot->ProtocolId, &Interface);
+        Status  = BS->HandleProtocol (Handle, &Prot->ProtocolId, (VOID**)&Interface);
         if (!EFI_ERROR (Status)) {
           if (Verbose) {
             for (Index1 = 0; Index1 < ProtocolBufferCount; Index1++) {
@@ -2027,7 +2027,7 @@ Returns:
           goto Done;
         }
 
-        Status = BS->HandleProtocol (Handle, ProtocolBuffer[Index1], &Interface);
+        Status = BS->HandleProtocol (Handle, ProtocolBuffer[Index1], (VOID**)&Interface);
         if (!EFI_ERROR (Status)) {
           PrintToken (
             STRING_TOKEN (STR_SHELLENV_PROTID_TWO_VARS_HG_NEW),

@@ -196,7 +196,7 @@ FakeUninstallHiiDatabase (
     Status = BS->HandleProtocol (
                   mFakeHiiHandle,
                   &gEfiHiiProtocolGuid,
-                  &FakeHii
+                  (VOID**)&FakeHii
                   );
     Status = BS->UninstallProtocolInterface (
                   mFakeHiiHandle,

@@ -121,7 +121,7 @@ Returns:
   //
   // There should only be one HII protocol
   //
-  Status = LibLocateProtocol (&gEfiHiiProtocolGuid, &Hii);
+  Status = LibLocateProtocol (&gEfiHiiProtocolGuid, (VOID**)&Hii);
   if (EFI_ERROR (Status) || NULL == Hii) {
     return EFI_ABORTED;
   }

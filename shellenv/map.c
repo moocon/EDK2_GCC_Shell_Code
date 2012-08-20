@@ -2038,13 +2038,13 @@ Returns:
     goto Done;
   }
 
-  Status = BS->HandleProtocol (Handle, &gEfiBlockIoProtocolGuid, &BlockIo);
+  Status = BS->HandleProtocol (Handle, &gEfiBlockIoProtocolGuid, (VOID**)&BlockIo);
   //
   // This is just for NT32, because fsntx has no block io protocol installed
   // but fsntx has installed simple file system protocol
   //
   if (EFI_ERROR (Status)) {
-    Status = BS->HandleProtocol (Handle, &gEfiSimpleFileSystemProtocolGuid, &BlockIo);
+    Status = BS->HandleProtocol (Handle, &gEfiSimpleFileSystemProtocolGuid, (VOID**)&BlockIo);
   }
 
   if (EFI_ERROR (Status)) {

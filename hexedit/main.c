@@ -147,7 +147,7 @@ Returns:
   EFI_SHELL_APP_INIT (ImageHandle, SystemTable);
 
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
-  Status = LibLocateProtocol (&gEfiHiiProtocolGuid, &Hii);
+  Status = LibLocateProtocol (&gEfiHiiProtocolGuid, (VOID**)&Hii);
   if (EFI_ERROR (Status)) {
     return Status;
   }

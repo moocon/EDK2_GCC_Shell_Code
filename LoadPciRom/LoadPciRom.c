@@ -377,7 +377,7 @@ Returns:
         }
 
         if (EfiRomHeader->CompressionType == EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED) {
-          Status = BS->LocateProtocol (&gEfiDecompressProtocolGuid, NULL, &Decompress);
+          Status = BS->LocateProtocol (&gEfiDecompressProtocolGuid, NULL, (VOID**)&Decompress);
           if (EFI_ERROR (Status)) {
             PrintToken (STRING_TOKEN (STR_LOADPCIROM_DECOMP_NOT_FOUND), HiiHandle);
             SkipImage = TRUE;

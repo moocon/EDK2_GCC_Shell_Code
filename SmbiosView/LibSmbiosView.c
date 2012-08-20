@@ -62,7 +62,7 @@ Returns:
   //
   // Get SMBIOS table from System Configure table
   //
-  Status = LibGetSystemConfigurationTable (&gEfiSmbiosTableGuid, &mSmbiosTable);
+  Status = LibGetSystemConfigurationTable (&gEfiSmbiosTableGuid, (VOID**)&mSmbiosTable);
 
   if (mSmbiosTable == NULL) {
     PrintToken (STRING_TOKEN (STR_SMBIOSVIEW_LIBSMBIOSVIEW_CANNOT_GET_TABLE), HiiHandle);

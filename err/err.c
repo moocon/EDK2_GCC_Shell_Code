@@ -149,7 +149,7 @@ _DumpHandleMask (
   EFI_DEBUG_MASK_PROTOCOL *dmp;
   UINTN                   Mask;
 
-  Status = BS->HandleProtocol (Handle, &gEfiDebugMaskProtocolGuid, &dmp);
+  Status = BS->HandleProtocol (Handle, &gEfiDebugMaskProtocolGuid, (VOID**)&dmp);
   if (!EFI_ERROR (Status)) {
     Status = dmp->GetDebugMask (dmp, &Mask);
     if (!EFI_ERROR (Status)) {
@@ -278,7 +278,7 @@ _SetDriverMask (
     goto Done;
   }
 
-  Status = BS->HandleProtocol (RealHandle, &gEfiDebugMaskProtocolGuid, &dmp);
+  Status = BS->HandleProtocol (RealHandle, &gEfiDebugMaskProtocolGuid, (VOID**)&dmp);
   if (EFI_ERROR (Status)) {
     PrintToken (STRING_TOKEN (STR_ERR_HANDLE_NOT_FOUND), HiiHandle, DrvHandle + 1);
     goto Done;
@@ -336,7 +336,7 @@ _SetAllDriverMask (
   }
   
   for (Index = 0; Index < BufferSize / sizeof(EFI_HANDLE); Index ++) {
-    Status = BS->HandleProtocol (Buffer[Index], &gEfiDebugMaskProtocolGuid, &dmp);
+    Status = BS->HandleProtocol (Buffer[Index], &gEfiDebugMaskProtocolGuid, (VOID**)&dmp);
     Status = dmp->SetDebugMask (dmp, Msk);
   }
 
