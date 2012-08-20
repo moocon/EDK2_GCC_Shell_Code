@@ -45,8 +45,8 @@ COMPONENT_TYPE       = APPLICATION
    Ver.c
    Ver.h 
    
-[sources.ia32,sources.x64]
-   IA32/ver32.c
+[sources.ia32,sources.x64,sources.ARM]
+   ia32/ver32.c
 
 [sources.ipf]
    IPF/ver64.c
