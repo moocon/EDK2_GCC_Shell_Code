@@ -27,7 +27,7 @@ extern UINT8      STRING_ARRAY_NAME[];
 //
 // Global Variables
 //
-EFI_HII_HANDLE    HiiHandle;
+EFI_HII_HANDLE    gHexEditHiiHandle;
 #if (EFI_SPECIFICATION_VERSION < 0x0002000A)
 EFI_HII_PROTOCOL  *Hii;
 #endif
@@ -93,10 +93,10 @@ PrintUsage (
   VOID
   )
 {
-  PrintToken (STRING_TOKEN (STR_HEXEDIT_USAGE), HiiHandle);
-  PrintToken (STRING_TOKEN (STR_HEXEDIT_FILENAME), HiiHandle);
-  PrintToken (STRING_TOKEN (STR_HEXEDIT_DISKNAME), HiiHandle);
-  PrintToken (STRING_TOKEN (STR_HEXEDIT_OFFSET_SIZE), HiiHandle);
+  PrintToken (STRING_TOKEN (STR_HEXEDIT_USAGE), gHexEditHiiHandle);
+  PrintToken (STRING_TOKEN (STR_HEXEDIT_FILENAME), gHexEditHiiHandle);
+  PrintToken (STRING_TOKEN (STR_HEXEDIT_DISKNAME), gHexEditHiiHandle);
+  PrintToken (STRING_TOKEN (STR_HEXEDIT_OFFSET_SIZE), gHexEditHiiHandle);
   Print (L"\n\n");
 }
 
@@ -158,12 +158,12 @@ Returns:
   // Register our string package with HII and return the handle to it.
   // If previously registered we will simply receive the handle
   //
-  EFI_SHELL_STR_INIT (HiiHandle, STRING_ARRAY_NAME, EfiHexeditGuid);
+  EFI_SHELL_STR_INIT (gHexEditHiiHandle, STRING_ARRAY_NAME, EfiHexeditGuid);
 
   if (!EFI_PROPER_VERSION (1, 10)) {
     PrintToken (
       STRING_TOKEN (STR_SHELLENV_GNC_COMMAND_NOT_SUPPORT),
-      HiiHandle,
+      gHexEditHiiHandle,
       L"hexedit",
       EFI_VERSION_1_10
       );
@@ -187,17 +187,17 @@ Returns:
     switch (RetCode) {
     case VarCheckConflict:
 
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_FLAG_CONFLICT), HiiHandle, L"hexedit", Useful);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_FLAG_CONFLICT), gHexEditHiiHandle, L"hexedit", Useful);
       break;
 
     case VarCheckDuplicate:
 
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_DUP_FLAG), HiiHandle, L"hexedit", Useful);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_DUP_FLAG), gHexEditHiiHandle, L"hexedit", Useful);
       break;
 
     case VarCheckUnknown:
 
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_UNKNOWN_FLAG), HiiHandle, L"hexedit", Useful);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_UNKNOWN_FLAG), gHexEditHiiHandle, L"hexedit", Useful);
       break;
 
     default:
@@ -220,10 +220,10 @@ Returns:
         ChkPck.FlagCount > 2 ||
         (ChkPck.FlagCount == 2 && LibCheckVarGetFlag (&ChkPck, L"-b") == NULL)
         ) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
     } else {
-      PrintToken (STRING_TOKEN (STR_HEXEDIT_VERBOSE_HELP), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_HEXEDIT_VERBOSE_HELP), gHexEditHiiHandle);
       Status = EFI_SUCCESS;
     }
 
@@ -233,13 +233,13 @@ Returns:
   Item = LibCheckVarGetFlag (&ChkPck, L"-d");
   if (Item) {
     if (3 < ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (3 > ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -249,7 +249,7 @@ Returns:
     Item    = Item->Next;
     Result  = HXtoi (Item->VarStr, &Offset);
     if (EFI_ERROR (Result)) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -257,13 +257,13 @@ Returns:
     Item    = Item->Next;
     Result  = HXtoi (Item->VarStr, &Size);
     if (EFI_ERROR (Result)) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (Offset < 0 || Size <= 0) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -274,13 +274,13 @@ Returns:
   Item = LibCheckVarGetFlag (&ChkPck, L"-m");
   if (Item) {
     if (2 < ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (2 > ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -288,7 +288,7 @@ Returns:
     Item    = ChkPck.VarList;
     Result  = HXtoi (Item->VarStr, &Offset);
     if (EFI_ERROR (Result)) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -296,20 +296,20 @@ Returns:
     Item    = Item->Next;
     Result  = HXtoi (Item->VarStr, &Size);
     if (EFI_ERROR (Result)) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (Offset < 0 || Size <= 0) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     LastOffset = (UINT64) Offset + (UINT64) Size - (UINT64) 1;
     if (LastOffset > 0xffffffff) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), HiiHandle, L"hexedit", Item->VarStr);
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_INVALID_ARG), gHexEditHiiHandle, L"hexedit", Item->VarStr);
       goto done;
     }
 
@@ -319,13 +319,13 @@ Returns:
   Item = LibCheckVarGetFlag (&ChkPck, L"-f");
   if (Item) {
     if (1 < ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (1 > ChkPck.ValueCount) {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_FEW), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -333,7 +333,7 @@ Returns:
     Item  = ChkPck.VarList;
     Name  = Item->VarStr;
     if (!HIsValidFileName (Name)) {
-      PrintToken (STRING_TOKEN (STR_HEXEDIT_FILE_NAME), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_HEXEDIT_FILE_NAME), gHexEditHiiHandle);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -345,20 +345,20 @@ Returns:
       if (Name != NULL) {
         FreeName  = TRUE;
       } else {
-        PrintToken(STRING_TOKEN (STR_HEXEDIT_INVALID_DIRECTORY), HiiHandle, L"hexedit");
+        PrintToken(STRING_TOKEN (STR_HEXEDIT_INVALID_DIRECTORY), gHexEditHiiHandle, L"hexedit");
         Status = EFI_INVALID_PARAMETER;
         goto done ;
       }
     } else if (1 == ChkPck.ValueCount) {
       Name = ChkPck.VarList->VarStr;
     } else {
-      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), HiiHandle, L"hexedit");
+      PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_TOO_MANY), gHexEditHiiHandle, L"hexedit");
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
 
     if (!HIsValidFileName (Name)) {
-      PrintToken (STRING_TOKEN (STR_HEXEDIT_FILE_NAME), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_HEXEDIT_FILE_NAME), gHexEditHiiHandle);
       Status = EFI_INVALID_PARAMETER;
       goto done;
     }
@@ -367,7 +367,7 @@ Returns:
   }
 
   if (SI->RedirArgc != 0) {
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_NOREDIRECT), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_NOREDIRECT), gHexEditHiiHandle);
     Status = EFI_INVALID_PARAMETER;
     goto done;
   }
@@ -376,7 +376,7 @@ Returns:
   if (EFI_ERROR (Status)) {
     Out->ClearScreen (Out);
     Out->EnableCursor (Out, TRUE);
-    PrintToken (STRING_TOKEN (STR_HEXEDIT_INIT_FAILED), HiiHandle);
+    PrintToken (STRING_TOKEN (STR_HEXEDIT_INIT_FAILED), gHexEditHiiHandle);
     goto done;
   }
 
@@ -453,19 +453,19 @@ Returns:
   //
   if (Status == EFI_SUCCESS) {
   } else if (Status == EFI_OUT_OF_RESOURCES) {
-    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_OUT_RESOURCE), HiiHandle, L"hexedit");
+    PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_OUT_RESOURCE), gHexEditHiiHandle, L"hexedit");
   } else {
     if (Buffer != NULL) {
       if (StrCmp (Buffer, L"") != 0) {
         //
         // print out the status string
         //
-        PrintToken (STRING_TOKEN (STR_HEXEDIT_ONE_VAR), HiiHandle, Buffer);
+        PrintToken (STRING_TOKEN (STR_HEXEDIT_ONE_VAR), gHexEditHiiHandle, Buffer);
       } else {
-        PrintToken (STRING_TOKEN (STR_HEXEDIT_UNKNOWN_EDITOR), HiiHandle);
+        PrintToken (STRING_TOKEN (STR_HEXEDIT_UNKNOWN_EDITOR), gHexEditHiiHandle);
       }
     } else {
-      PrintToken (STRING_TOKEN (STR_HEXEDIT_UNKNOWN_EDITOR), HiiHandle);
+      PrintToken (STRING_TOKEN (STR_HEXEDIT_UNKNOWN_EDITOR), gHexEditHiiHandle);
     }
   }
 

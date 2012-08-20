@@ -173,7 +173,7 @@ Returns:
   EditorClearLine (INPUT_BAR_LOCATION);
 
   Out->SetCursorPosition (Out, 0, INPUT_BAR_LOCATION - 1);
-  PrintToken (STRING_TOKEN (STR_EDIT_LIBINPUTBAR_MAININPUTBAR), HiiHandle, MainInputBar.Prompt);
+  PrintToken (STRING_TOKEN (STR_EDIT_LIBINPUTBAR_MAININPUTBAR), gEditHiiHandle, MainInputBar.Prompt);
 
   //
   // that's the maximum input length that can be displayed on screen

@@ -30,7 +30,7 @@ extern UINT8    STRING_ARRAY_NAME[];
 //
 #include STRING_DEFINES_FILE
 
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiClsGuid = EFI_CLS_GUID;
 SHELL_VAR_CHECK_ITEM    ClsCheckList[] = {
   {

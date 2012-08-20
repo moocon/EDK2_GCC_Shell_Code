@@ -36,7 +36,7 @@ extern UINT8  STRING_ARRAY_NAME[];
 //
 // Global Variables
 //
-EFI_HII_HANDLE  HiiHandle;
+STATIC EFI_HII_HANDLE  HiiHandle;
 EFI_GUID        EfiMvGuid = EFI_MV_GUID;
 SHELL_VAR_CHECK_ITEM      MvCheckList[] = {
   {

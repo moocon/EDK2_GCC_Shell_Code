@@ -1339,7 +1339,7 @@ LibCmdGetStringByToken (
 {
   EFI_STATUS      Status;
   CHAR16          *String;
-  EFI_HII_HANDLE  HiiHandle;
+  STATIC EFI_HII_HANDLE  HiiHandle;
 
   ASSERT (Str);
 

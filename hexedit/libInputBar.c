@@ -201,7 +201,7 @@ Returns:
   HEditorClearLine (INPUT_BAR_LOCATION);
 
   Out->SetCursorPosition (Out, 0, INPUT_BAR_LOCATION - 1);
-  PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBINPUTBAR_MAININPUTBAR), HiiHandle, HMainInputBar.Prompt);
+  PrintToken (STRING_TOKEN (STR_HEXEDIT_LIBINPUTBAR_MAININPUTBAR), gHexEditHiiHandle, HMainInputBar.Prompt);
 
   //
   // that's the maximum input length that can be displayed on screen
