@@ -1872,7 +1872,7 @@ Returns:
     return Status;
   }
   //
-  // Processing foo: or foo:\
+  // Processing foo:\ or foo:
   //
   if (PathPos != -1 && Ptr1 == NULL) {
     return Status;
