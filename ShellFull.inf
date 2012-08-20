@@ -20,8 +20,8 @@
 #--*/
 
 [defines]
-BASE_NAME            = Shell
-FILE_GUID            = c57ad6b7-0515-40a8-9d21-551652854e37
+BASE_NAME            = ShellFull
+FILE_GUID            = 1903FB23-E526-4BDA-85E4-D68F2EEF0C20 
 COMPONENT_TYPE       = APPLICATION
 
 [sources.common]
