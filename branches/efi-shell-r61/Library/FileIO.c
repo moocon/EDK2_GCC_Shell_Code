@@ -719,7 +719,6 @@ LibSplitFsAndPath (
   IN OUT CHAR16                       **Path
   )
 {
-  EFI_STATUS  Status;
   CHAR16      *p;
   UINTN       Size;
 
@@ -728,7 +727,6 @@ LibSplitFsAndPath (
 
   *Fs     = NULL;
   *Path   = NULL;
-  Status  = EFI_SUCCESS;
 
   p       = AbPath;
   while (*p) {
@@ -1017,13 +1015,11 @@ Return:
   EFI_LIST_ENTRY  SrcList;
   EFI_LIST_ENTRY  DstList;
   EFI_STATUS      Status;
-  EFI_LIST_ENTRY  *Link;
   SHELL_FILE_ARG  *SrcArg;
   SHELL_FILE_ARG  *DstArg;
   
   ASSERT (IsSame != NULL);
 
-  Link    = NULL;
   SrcArg  = NULL;
   DstArg  = NULL;
   InitializeListHead (&SrcList);

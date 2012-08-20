@@ -131,7 +131,6 @@ Returns:
   EFI_HANDLE                *BlockIoBuffer;
   EFI_DEVICE_PATH_PROTOCOL  *DevicePath;
   UINTN                     Index;
-  EFI_DEVICE_PATH_PROTOCOL  *Start;
   EFI_DEVICE_PATH_PROTOCOL  *Next;
   EFI_DEVICE_PATH_PROTOCOL  *DevPath;
   HARDDRIVE_DEVICE_PATH     *HardDriveDevicePath;
@@ -204,7 +203,6 @@ Returns:
       PreviousNodeIsHardDriveDevicePath = FALSE;
 
       DevPath = DevicePath;
-      Start = DevPath;
       //
       // Check for end of device path type
       //
@@ -796,14 +794,12 @@ LibScanHandleDatabase (
   UINTN                               OpenInfoIndex;
   UINTN                               ChildIndex;
   BOOLEAN                             DriverBindingHandleIndexValid;
-  BOOLEAN                             ControllerHandleIndexValid;
 
   DriverBindingHandleIndexValid = FALSE;
   if (DriverBindingHandleIndex != NULL) {
     *DriverBindingHandleIndex = 0xffffffff;
   }
 
-  ControllerHandleIndexValid = FALSE;
   if (ControllerHandleIndex != NULL) {
     *ControllerHandleIndex = 0xffffffff;
   }
@@ -847,7 +843,6 @@ LibScanHandleDatabase (
 
     if (ControllerHandle != NULL && ControllerHandleIndex != NULL && (*HandleBuffer)[HandleIndex] == ControllerHandle) {
       *ControllerHandleIndex      = (UINT32) HandleIndex;
-      ControllerHandleIndexValid  = TRUE;
     }
 
   }
