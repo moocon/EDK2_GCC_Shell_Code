@@ -197,3 +197,4 @@ ShellGetHandleNum (
   );
 
 #endif
+
