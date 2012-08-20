@@ -246,7 +246,7 @@ Returns:
   Status = LibDevicePathToInterface (
             &gEfiBlockIoProtocolGuid,
             DevicePath,
-            &BlkIo
+            (VOID**)&BlkIo
             );
   if (EFI_ERROR (Status)) {
     HMainStatusBarSetStatusString (L"Read Disk Failed");
@@ -427,7 +427,7 @@ Returns:
   Status = LibDevicePathToInterface (
             &gEfiBlockIoProtocolGuid,
             DevicePath,
-            &BlkIo
+            (VOID**)&BlkIo
             );
   if (EFI_ERROR (Status)) {
     return Status;

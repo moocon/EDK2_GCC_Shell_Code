@@ -333,7 +333,7 @@ Returns:
     Status = BS->HandleProtocol (
                   HandleBuffer[0],
                   &gEfiDevicePathProtocolGuid,
-                  &Instance
+                  (VOID**)&Instance
                   );
     if (EFI_ERROR (Status)) {
       DriverBindingHandleCount  = 1;
@@ -349,7 +349,7 @@ Returns:
     Status = BS->HandleProtocol (
                   HandleBuffer[0],
                   &gEfiDevicePathProtocolGuid,
-                  &Instance
+                  (VOID**)&Instance
                   );
     if (EFI_ERROR (Status)) {
       PrintToken (
@@ -368,7 +368,7 @@ Returns:
     Status = BS->HandleProtocol (
                   HandleBuffer[1],
                   &gEfiDriverBindingProtocolGuid,
-                  &Instance
+                  (VOID**)&Instance
                   );
     if (EFI_ERROR (Status)) {
       PrintToken (
@@ -407,7 +407,7 @@ Returns:
       Status = BS->HandleProtocol (
                     AllHandleBuffer[Index],
                     &gEfiDriverBindingProtocolGuid,
-                    &Instance
+                    (VOID**)&Instance
                     );
       if (EFI_ERROR (Status)) {
         DeviceHandleBuffer[DeviceHandleCount++] = AllHandleBuffer[Index];
@@ -1052,7 +1052,7 @@ SEnvConnectConsole (
     Status = BS->HandleProtocol (
                   *ConsoleHandle,
                   ConsoleGuid,
-                  &Interface
+                  (VOID**)&Interface
                   );
   } 
 
@@ -1079,7 +1079,7 @@ SEnvConnectConsole (
         Status = BS->HandleProtocol (
                       AllHandleBuffer[Index],
                       &gEfiDevicePathProtocolGuid,
-                      &Interface
+                      (VOID**)&Interface
                       );
         if (!EFI_ERROR (Status)) {
           ConsoleIndex = Index;
@@ -1095,7 +1095,7 @@ SEnvConnectConsole (
     BS->HandleProtocol (
           *ConsoleHandle,
           ConsoleGuid,
-          ConsoleInterface
+          (VOID**)ConsoleInterface
           );
   }
 

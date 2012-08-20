@@ -669,7 +669,7 @@ Returns:
   Status = BS->LocateProtocol (
                 &gEfiHiiConfigRoutingProtocolGuid,
                 NULL,
-                &mHiiConfigRouting
+                (VOID**)&mHiiConfigRouting
                 );
   if (EFI_ERROR (Status)) {
     return EFI_NOT_FOUND;

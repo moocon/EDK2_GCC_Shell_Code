@@ -99,13 +99,13 @@ _GetFsDpOfImg (
   Status = BS->HandleProtocol (
                 ImgHnd,
                 &gEfiLoadedImageProtocolGuid,
-                &img
+                (VOID**)&img
                 );
   if (!EFI_ERROR (Status)) {
     Status = BS->HandleProtocol (
                   img->DeviceHandle,
                   &gEfiDevicePathProtocolGuid,
-                  &dp
+                  (VOID**)&dp
                   );
     if (!EFI_ERROR (Status)) {
       *DevPath  = DuplicateDevicePath (dp);
@@ -220,7 +220,7 @@ _DoInit (
   //
   Status = LibLocateProtocol (
              &gEfiConsoleControlProtocolGuid,
-             &ConsoleControl
+             (VOID**)&ConsoleControl
              );
   if (!EFI_ERROR (Status)) {
     Status = ConsoleControl->GetMode (ConsoleControl, &mOldCurrentMode, NULL, NULL);
@@ -342,7 +342,7 @@ _EnableShellEnv (
       Status = _ShellLoadEnvDriver (ImageHandle);
     )
     if (EFI_ERROR (Status)) {
-      Status = LibLocateProtocol (&ShellEnvProtocol, &SE);
+      Status = LibLocateProtocol (&ShellEnvProtocol, (VOID**)&SE);
       if (EFI_ERROR (Status)) {
         PrintToken (STRING_TOKEN (STR_NSHELL_ENV_DRIVER), HiiNewshellHandle);
         return Status;
@@ -372,7 +372,7 @@ _InstallShellInterface (
     *IsRootInstance = TRUE;
   }
 
-  Status = LibLocateProtocol (&ShellEnvProtocol, &SE);
+  Status = LibLocateProtocol (&ShellEnvProtocol, (VOID**)&SE);
   ASSERT (!EFI_ERROR (Status));
   SI = SE->NewShell (ImageHandle);
 
@@ -543,7 +543,7 @@ _CleanUpOnExit (
   //
   ConsoleControlStatus = LibLocateProtocol (
                            &gEfiConsoleControlProtocolGuid,
-                           &ConsoleControl
+                           (VOID**)&ConsoleControl
                            );
   if (!EFI_ERROR (ConsoleControlStatus)) {
     ConsoleControlStatus = ConsoleControl->GetMode (ConsoleControl, &CurrentMode, NULL, NULL);
@@ -723,7 +723,7 @@ Returns:
         Status = BS->HandleProtocol (
                       ImageHandle,
                       &ShellInterfaceProtocol,
-                      &SI
+                      (VOID**)&SI
                       );
         ASSERT (!EFI_ERROR (Status));
       }

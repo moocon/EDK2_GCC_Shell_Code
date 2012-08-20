@@ -192,7 +192,7 @@ Returns:
   //
   //
   //
-  Status = LibLocateProtocol (&gEfiDecompressProtocolGuid, &Decompress);
+  Status = LibLocateProtocol (&gEfiDecompressProtocolGuid, (VOID**)&Decompress);
   if (EFI_ERROR (Status)) {
     PrintToken (STRING_TOKEN (STR_DECOMPRESS_PROTOCOL_NOT_FOUND), HiiDecompressHandle, L"efidecompress");
     Status = EFI_UNSUPPORTED;

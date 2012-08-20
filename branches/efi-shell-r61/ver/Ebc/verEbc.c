@@ -45,7 +45,7 @@ DisplayExtendedVersionInfo (
   Status = BS->LocateProtocol (
                  &gEfiEbcProtocolGuid,
                  NULL,
-                 &Ebc
+                 (VOID**)&Ebc
                  );
   if (EFI_ERROR (Status)) {
     return ;

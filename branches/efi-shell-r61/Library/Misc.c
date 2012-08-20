@@ -348,7 +348,7 @@ Returns:
   ASSERT (Buffer != NULL);
 
   if (mShellEnv == NULL) {
-    Status = LibLocateProtocol (&ShellEnvProtocol, &mShellEnv);
+    Status = LibLocateProtocol (&ShellEnvProtocol, (VOID**)&mShellEnv);
     if (EFI_ERROR (Status)) {
       mShellEnv = NULL;
     }
@@ -1171,7 +1171,7 @@ Returns:
       Status = BS->HandleProtocol (
                     Image->DeviceHandle,
                     &gEfiFirmwareVolumeProtocolGuid,
-                    &FV
+                    (VOID**)&FV
                     );
       if (!EFI_ERROR (Status)) {
         Status = FV->ReadSection (
@@ -1192,7 +1192,7 @@ Returns:
         Status = BS->HandleProtocol (
                       Image->DeviceHandle,
                       &gEfiFirmwareVolume2ProtocolGuid,
-                      &FV2
+                      (VOID**)&FV2
                       );
         if (!EFI_ERROR (Status)) {
           Status = FV2->ReadSection (

@@ -185,7 +185,7 @@ Returns:
   //
   // Locate the Cpu Arch Protocol.
   //
-  Status = BS->LocateProtocol (&gEfiCpuArchProtocolGuid, NULL, &Cpu);
+  Status = BS->LocateProtocol (&gEfiCpuArchProtocolGuid, NULL, (VOID**)&Cpu);
   if (EFI_ERROR (Status)) {
     return Status;
   }

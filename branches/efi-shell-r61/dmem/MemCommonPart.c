@@ -156,7 +156,7 @@ Return:
   //
   PrintToken (STRING_TOKEN (STR_DMEM_MEMORY_ADDR), HiiDmemHandle, 2 * sizeof (UINTN), Address, Size);
   if (MMIo) {
-    Status = BS->LocateProtocol (&gEfiPciRootBridgeIoProtocolGuid, NULL, &PciRootBridgeIo);
+    Status = BS->LocateProtocol (&gEfiPciRootBridgeIoProtocolGuid, NULL, (VOID**)&PciRootBridgeIo);
     if (EFI_ERROR (Status)) {
       PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_LOC_PROT_ERR_EX), HiiDmemHandle, L"dmem", L"PciRootBridgeIo");
       return Status;
@@ -316,7 +316,7 @@ Return:
   //
   PrintToken (STRING_TOKEN (STR_DMEM_NEW_MEMORY_ADDR), HiiDmemHandle, 2 * sizeof (UINTN), Address, Size);
   if (MMIo) {
-    Status = BS->LocateProtocol (&gEfiPciRootBridgeIoProtocolGuid, NULL, &PciRootBridgeIo);
+    Status = BS->LocateProtocol (&gEfiPciRootBridgeIoProtocolGuid, NULL, (VOID**)&PciRootBridgeIo);
     if (EFI_ERROR (Status)) {
       PrintToken (STRING_TOKEN (STR_SHELLENV_GNC_LOC_PROT_ERR_EX), HiiDmemHandle, L"dmem", L"PciRootBridgeIo");
       return Status;

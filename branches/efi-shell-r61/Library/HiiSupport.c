@@ -56,11 +56,11 @@ Returns:
     return EFI_SUCCESS;
   }
 
-  Status = LibLocateProtocol (&gEfiHiiDatabaseProtocolGuid, &gLibHiiDatabase);
+  Status = LibLocateProtocol (&gEfiHiiDatabaseProtocolGuid, (VOID**)&gLibHiiDatabase);
   if (EFI_ERROR (Status)) {
     return Status;
   }
-  Status = LibLocateProtocol (&gEfiHiiStringProtocolGuid, &gLibHiiString);
+  Status = LibLocateProtocol (&gEfiHiiStringProtocolGuid, (VOID**)&gLibHiiString);
   if (EFI_ERROR (Status)) {
     return Status;
   }  

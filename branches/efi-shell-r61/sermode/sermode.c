@@ -104,7 +104,7 @@ iDisplaySettings (
 
     }
 
-    Status = BS->HandleProtocol (Handles[Index], &gEfiSerialIoProtocolGuid, &SerialIo);
+    Status = BS->HandleProtocol (Handles[Index], &gEfiSerialIoProtocolGuid, (VOID**)&SerialIo);
     if (!EFI_ERROR (Status)) {
       switch (SerialIo->Mode->Parity) {
       case DefaultParity:
@@ -454,7 +454,7 @@ Returns:
       continue;
     }
 
-    Status = BS->HandleProtocol (Handles[Index], &gEfiSerialIoProtocolGuid, &SerialIo);
+    Status = BS->HandleProtocol (Handles[Index], &gEfiSerialIoProtocolGuid, (VOID**)&SerialIo);
     if (!EFI_ERROR (Status)) {
       Status = SerialIo->SetAttributes (
                           SerialIo,

@@ -1034,7 +1034,7 @@ Returns:
   Status = BS->HandleProtocol (
                 Handle,
                 &gEfiPciRootBridgeIoProtocolGuid,
-                IoDev
+                (VOID**)IoDev
                 );
 
   if (EFI_ERROR (Status)) {
@@ -1043,7 +1043,7 @@ Returns:
   //
   // Call Configuration() to get address space descriptors
   //
-  Status = (*IoDev)->Configuration (*IoDev, Descriptors);
+  Status = (*IoDev)->Configuration (*IoDev, (VOID**)Descriptors);
   if (Status == EFI_UNSUPPORTED) {
     *Descriptors = NULL;
     return EFI_SUCCESS;

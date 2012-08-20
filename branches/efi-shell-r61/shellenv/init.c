@@ -143,7 +143,7 @@ Returns:
     Status = BS->HandleProtocol (
                   mOldSEnv->Handle,
                   &ShellEnvProtocol,
-                  &(mOldSEnv->Interface)
+                  (VOID**)&(mOldSEnv->Interface)
                   );
     ASSERT (!EFI_ERROR (Status));
     Status = BS->ReinstallProtocolInterface (

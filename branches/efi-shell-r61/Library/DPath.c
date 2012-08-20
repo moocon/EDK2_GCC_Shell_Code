@@ -1468,7 +1468,7 @@ Returns:
   
   Status = LibLocateProtocol (
              &gEfiDevicePathToTextProtocolGuid,
-             &DevPathToText
+             (VOID**)&DevPathToText
              );
   if (!EFI_ERROR (Status)) {
     ToText = DevPathToText->ConvertDevicePathToText (
@@ -1766,7 +1766,7 @@ Returns:
       Status = BS->HandleProtocol (
                     Device,
                     Protocol,
-                    Interface
+                    (VOID**)Interface
                     );
     }
   }

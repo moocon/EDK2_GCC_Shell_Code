@@ -136,7 +136,7 @@ Returns:
   Status = BS->HandleProtocol (
                 In,
                 &gEfiSimplePointerProtocolGuid,
-                &HMainEditor.MouseInterface
+                (VOID**)&HMainEditor.MouseInterface
                 );
   if (EFI_ERROR (Status)) {
     //
@@ -159,7 +159,7 @@ Returns:
         Status = BS->HandleProtocol (
                       HandleBuffer[Index],
                       &gEfiSimplePointerProtocolGuid,
-                      &HMainEditor.MouseInterface
+                      (VOID**)&HMainEditor.MouseInterface
                       );
         if (!EFI_ERROR (Status)) {
           break;
